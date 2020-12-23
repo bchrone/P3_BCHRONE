@@ -9,6 +9,7 @@ import Foundation
 
 class Player {
 
+var allCharacter = [Ban(),Merlin(),Meliodas(),Elizabeth(),Diane(),King(),Gowther(),Escanor()]
 var playerOne : [Character] = []
 var playerTwo : [Character] = []
 var rWeapons : [Weapon] = []
@@ -16,51 +17,102 @@ var caracChoiceOne : Character = Meliodas()
 var caracChoiceTwo : Character = Meliodas()
 var phrase = "Sélectionner un personnage"
 var phrase2 = "Sélectionner un deuxième personnage"
+var phrase3 = "Sélectionner un troisième personnage"
+
 var nbr = 0
-//mettre tous les personnages dans 1 tableau puis les soustraires
+/*===================================================================================
+====================================================================================
+====================================================================================
+            Fonction permettant à chaque joueur de choisir un personnage
+====================================================================================
+====================================================================================
+===================================================================================*/
+     func charactersLeft(){
+                    
+                for characters in allCharacter{
+                    nbr += 1
+                    print("Personnage \(nbr) : \(characters.name), Vie : \(characters.life), Arme : \(characters.weapon.name), dégâts : \(characters.weapon.weaponPoint)")
+                }
+        nbr = 0
+     }
+    
     
 /*===================================================================================
  ====================================================================================
  ====================================================================================
- Fonction permettant à chaque joueur de choisir un personnage
+            Fonction permettant à chaque joueur de choisir un personnage
  ====================================================================================
  ====================================================================================
  ===================================================================================*/
  func chooseCharacters(){
         
-        print("Joueur 1 Sélectionné votre personnage !"
-                + "\(Meliodas())"
-                + "\(Elizabeth())"
-            )
-        
-        while playerOne.count != 2 {
+        print("Joueur 1 Sélectionné votre personnage !   ")
+
+        charactersLeft()
+    
+        while playerOne.count != 3 {
             
             if playerOne.count == 0 {
                 print(phrase)
-            } else {
+            } else if playerOne.count == 1 {
                 print(phrase2)
+            } else {
+                print(phrase3)
             }
-            
-            
             
             if let choice = readLine(){
                 switch choice {
                 case "1":
-                    playerOne += [Meliodas()]
+                    playerOne += [Ban()]
+                    allCharacter.remove(at: nbr)
                 case "2" :
+                    nbr += 1
+                    playerOne += [Merlin()]
+                    allCharacter.remove(at: nbr)
+                case "3":
+                    nbr += 2
+                    playerOne += [Meliodas()]
+                    allCharacter.remove(at: nbr)
+                case "4" :
+                    nbr += 3
                     playerOne += [Elizabeth()]
+                    allCharacter.remove(at: nbr)
+                case "5":
+                    nbr += 4
+                    playerOne += [Diane()]
+                    allCharacter.remove(at: nbr)
+                case "6" :
+                    nbr += 5
+                    playerOne += [King()]
+                    allCharacter.remove(at: nbr)
+                case "7":
+                    nbr += 6
+                    playerOne += [Gowther()]
+                    allCharacter.remove(at: nbr)
+                case "8" :
+                    nbr += 7
+                    playerOne += [Escanor()]
+                    allCharacter.remove(at: nbr)
                 default:
                     print("Try Again")
                 }
+                nbr = 0
                 print("Vous avez \(playerOne)")
+                charactersLeft()
+                
             }
         }
             
-        print("Joueur 2 Sélectionné votre personnage !"
-                + "\(Meliodas())"
-                + "\(Elizabeth())"
-            )
-        
+        print("Joueur 2 Sélectionné votre personnage !")
+    
+    for characters in allCharacter{
+        nbr += 1
+        print("Personnage \(nbr) : \(characters.name), Vie : \(characters.life), Arme : \(characters.weapon.name), dégâts : \(characters.weapon.weaponPoint)")
+    }
+    
+    nbr = 0
+    
+    
         while playerTwo.count != 2 {
             
             if playerTwo.count == 0 {
@@ -86,12 +138,12 @@ var nbr = 0
 /*===================================================================================
 ====================================================================================
 ====================================================================================
-Fonction permettant d'avoir un coffre aléatoirement dans la partie
+        Fonction permettant d'avoir un coffre aléatoirement dans la partie
 ====================================================================================
 ====================================================================================
 ===================================================================================*/
     func randomWeapons(){
-        rWeapons += [Gun()]
+        //rWeapons += [()]
         rWeapons += [Sword()]
         let randomIndex = Int(arc4random_uniform(UInt32(rWeapons.count)))
         let randomWeapon = rWeapons [randomIndex]
@@ -110,20 +162,24 @@ Fonction permettant d'avoir un coffre aléatoirement dans la partie
 /*===================================================================================
 ====================================================================================
 ====================================================================================
-Fonction permettant de choisir le personnage que l'on doit attaquer
+    Fonction permettant de choisir le personnage que le joueur 1 doit attaquer
 ====================================================================================
 ====================================================================================
 ===================================================================================*/
     func one(){
+        
+        let phrase = "Joueur 1 attaque avec \(caracChoiceOne.name) et l'arme \(caracChoiceOne.weapon.name)"
 
         if let choice =  readLine(){
 
         
         switch choice {
         case "1":
+            print(phrase)
             caracChoiceTwo = playerTwo[0]
             caracChoiceOne.attack(character: caracChoiceTwo)
         case "2":
+            print(phrase)
             caracChoiceTwo = playerTwo[1]
             caracChoiceOne.attack(character: caracChoiceTwo)
         default:
@@ -136,7 +192,37 @@ Fonction permettant de choisir le personnage que l'on doit attaquer
 /*===================================================================================
 ====================================================================================
 ====================================================================================
-    Fonction permettant d'avoir un coffre aléatoirement dans la partie
+    Fonction permettant de choisir le personnage que le joueur 2 doit attaquer
+====================================================================================
+====================================================================================
+===================================================================================*/
+        func two(){
+            
+            let phrase = "Joueur 2 attaque avec \(caracChoiceOne.name) et l'arme \(caracChoiceOne.weapon.name)"
+
+            if let choice =  readLine(){
+
+            
+            switch choice {
+            case "1":
+                print(phrase)
+                caracChoiceOne = playerOne[0]
+                caracChoiceTwo.attack(character: caracChoiceOne)
+            case "2":
+                print(phrase)
+                caracChoiceOne = playerOne[1]
+                caracChoiceTwo.attack(character: caracChoiceOne)
+            default:
+                print("Mauvaise manipulation !")
+            }
+            
+            }
+            
+        }
+/*===================================================================================
+====================================================================================
+====================================================================================
+        Fonction permettant de savoir qui remporte la partie et les stats
 ====================================================================================
 ====================================================================================
 ===================================================================================*/
@@ -160,7 +246,7 @@ Fonction permettant de choisir le personnage que l'on doit attaquer
 /*===================================================================================
 ====================================================================================
 ====================================================================================
-    Fonction permettant d'avoir un coffre aléatoirement dans la partie
+                    Fonction permettant de lancer jeu
 ====================================================================================
 ====================================================================================
 ===================================================================================*/
@@ -199,11 +285,11 @@ Fonction permettant de choisir le personnage que l'on doit attaquer
     case "1":
         caracChoiceTwo = playerTwo[0]
         print("Qui Voulez-Vous Attaquer ?  \(playerOne)")
-        one()
+        two()
     case "2":
         caracChoiceTwo = playerTwo[1]
         print("Qui Voulez-Vous Attaquer ?  \(playerOne)")
-        one()
+        two()
     default:
         print("Mauvaise manipulation !")
     }
