@@ -15,7 +15,7 @@ var playerTwo : [Character] = []
 var rWeapons : [Weapon] = []
 var caracChoiceOne : Character = Meliodas()
 var caracChoiceTwo : Character = Meliodas()
-var phrase = "Sélectionner un personnage"
+var phrase = "Sélectionner un premier personnage"
 var phrase2 = "Sélectionner un deuxième personnage"
 var phrase3 = "Sélectionner un troisième personnage"
 
@@ -23,7 +23,7 @@ var nbr = 0
 /*===================================================================================
 ====================================================================================
 ====================================================================================
-            Fonction permettant à chaque joueur de choisir un personnage
+            Fonction permettant de connaitre les personnage restant
 ====================================================================================
 ====================================================================================
 ===================================================================================*/
@@ -35,8 +35,34 @@ var nbr = 0
                 }
         nbr = 0
      }
-    
-    
+/*===================================================================================
+====================================================================================
+====================================================================================
+            Fonction permettant de connaitre les personnage du joueur 1
+====================================================================================
+====================================================================================
+===================================================================================*/
+         func whoIhaveOne(){
+                for characters in playerOne{
+                nbr += 1
+                print("\(nbr) : \(characters.name), Vie : \(characters.life), Arme : \(characters.weapon.name), dégâts : \(characters.weapon.weaponPoint)")
+            }
+    nbr = 0
+ }
+/*===================================================================================
+====================================================================================
+====================================================================================
+            Fonction permettant de connaitre les personnage du joueur 2
+====================================================================================
+====================================================================================
+===================================================================================*/
+             func whoIhaveTwo(){
+                    for characters in playerTwo{
+                    nbr += 1
+                    print("\(nbr) : \(characters.name), Vie : \(characters.life), Arme : \(characters.weapon.name), dégâts : \(characters.weapon.weaponPoint)")
+                }
+        nbr = 0
+     }
 /*===================================================================================
  ====================================================================================
  ====================================================================================
@@ -46,93 +72,141 @@ var nbr = 0
  ===================================================================================*/
  func chooseCharacters(){
         
-        print("Joueur 1 Sélectionné votre personnage !   ")
-
-        charactersLeft()
+        print("Joueur 1 Sélectionné vos personnages !")
     
         while playerOne.count != 3 {
             
             if playerOne.count == 0 {
                 print(phrase)
+                charactersLeft()
             } else if playerOne.count == 1 {
                 print(phrase2)
+                charactersLeft()
             } else {
                 print(phrase3)
+                charactersLeft()
             }
             
             if let choice = readLine(){
                 switch choice {
                 case "1":
-                    playerOne += [Ban()]
+                    //récupérer dans caracchoiceone
+                    caracChoiceOne = allCharacter[0]
+                    playerOne.insert(caracChoiceOne, at: 0)
                     allCharacter.remove(at: nbr)
                 case "2" :
                     nbr += 1
-                    playerOne += [Merlin()]
+                    caracChoiceOne = allCharacter[1]
+                    playerOne.insert(caracChoiceOne, at: 0)
                     allCharacter.remove(at: nbr)
                 case "3":
                     nbr += 2
-                    playerOne += [Meliodas()]
+                    caracChoiceOne = allCharacter[2]
+                    playerOne.insert(caracChoiceOne, at: 0)
                     allCharacter.remove(at: nbr)
                 case "4" :
                     nbr += 3
-                    playerOne += [Elizabeth()]
+                    caracChoiceOne = allCharacter[3]
+                    playerOne.insert(caracChoiceOne, at: 0)
                     allCharacter.remove(at: nbr)
                 case "5":
                     nbr += 4
-                    playerOne += [Diane()]
+                    caracChoiceOne = allCharacter[4]
+                    playerOne.insert(caracChoiceOne, at: 0)
                     allCharacter.remove(at: nbr)
                 case "6" :
                     nbr += 5
-                    playerOne += [King()]
+                    caracChoiceOne = allCharacter[5]
+                    playerOne.insert(caracChoiceOne, at: 0)
                     allCharacter.remove(at: nbr)
                 case "7":
                     nbr += 6
-                    playerOne += [Gowther()]
+                    caracChoiceOne = allCharacter[6]
+                    playerOne.insert(caracChoiceOne, at: 0)
                     allCharacter.remove(at: nbr)
                 case "8" :
                     nbr += 7
-                    playerOne += [Escanor()]
+                    caracChoiceOne = allCharacter[7]
+                    playerOne.insert(caracChoiceOne, at: 0)
                     allCharacter.remove(at: nbr)
                 default:
                     print("Try Again")
                 }
                 nbr = 0
-                print("Vous avez \(playerOne)")
-                charactersLeft()
+                print("Vos personnages sont :")
+                whoIhaveOne()
+                
                 
             }
         }
             
         print("Joueur 2 Sélectionné votre personnage !")
+
     
-    for characters in allCharacter{
-        nbr += 1
-        print("Personnage \(nbr) : \(characters.name), Vie : \(characters.life), Arme : \(characters.weapon.name), dégâts : \(characters.weapon.weaponPoint)")
-    }
-    
-    nbr = 0
-    
-    
-        while playerTwo.count != 2 {
-            
-            if playerTwo.count == 0 {
-                print(phrase)
-            } else {
-                print(phrase2)
-            }
-            
-            if let choice = readLine(){
-                switch choice {
-                case "1":
-                    playerTwo += [Meliodas()]
-                case "2" :
-                    playerTwo += [Elizabeth()]
-                default:
-                    print("Try Again")
-                }
-                print("Vous avez \(playerTwo)")
-            }
+    while playerTwo.count != 3 {
+        
+        if playerTwo.count == 0 {
+            print(phrase)
+            charactersLeft()
+        } else if playerTwo.count == 1 {
+            print(phrase2)
+            charactersLeft()
+        } else {
+            print(phrase3)
+            charactersLeft()
         }
+        
+        if let choice = readLine(){
+            switch choice {
+            case "1":
+                //récupérer dans caracchoiceone
+                caracChoiceTwo = allCharacter[0]
+                playerTwo.insert(caracChoiceTwo, at: 0)
+                allCharacter.remove(at: nbr)
+            case "2" :
+                nbr += 1
+                caracChoiceTwo = allCharacter[1]
+                playerTwo.insert(caracChoiceTwo, at: 0)
+                allCharacter.remove(at: nbr)
+            case "3":
+                nbr += 2
+                caracChoiceTwo = allCharacter[2]
+                playerTwo.insert(caracChoiceTwo, at: 0)
+                allCharacter.remove(at: nbr)
+            case "4" :
+                nbr += 3
+                caracChoiceTwo = allCharacter[3]
+                playerTwo.insert(caracChoiceTwo, at: 0)
+                allCharacter.remove(at: nbr)
+            case "5":
+                nbr += 4
+                caracChoiceTwo = allCharacter[4]
+                playerTwo.insert(caracChoiceTwo, at: 0)
+                allCharacter.remove(at: nbr)
+            case "6" :
+                nbr += 5
+                caracChoiceTwo = allCharacter[5]
+                playerTwo.insert(caracChoiceTwo, at: 0)
+                allCharacter.remove(at: nbr)
+            case "7":
+                nbr += 6
+                caracChoiceTwo = allCharacter[6]
+                playerTwo.insert(caracChoiceTwo, at: 0)
+                allCharacter.remove(at: nbr)
+            case "8" :
+                nbr += 7
+                caracChoiceTwo = allCharacter[7]
+                playerTwo.insert(caracChoiceTwo, at: 0)
+                allCharacter.remove(at: nbr)
+            default:
+                print("Try Again")
+            }
+            nbr = 0
+            print("Vos personnages sont :")
+            whoIhaveTwo()
+            
+        }
+    }
         print("Combattez !")
     }
 /*===================================================================================
@@ -151,12 +225,12 @@ var nbr = 0
         // faire avec modulo
         
         
-        if randomT < 5  {
-            print("Joueur 1 Vouz héritez d'une une nouvelle arme !")
+        if randomT < 5 && randomT > 2 && nbr > 5{
             caracChoiceOne.weapon = randomWeapon
-        }else if randomT > 25 {
-            print("Joueur 2 Vouz héritez d'une une nouvelle arme !")
+            print("Joueur 1 Vouz héritez d'une une nouvelle arme qui est \(caracChoiceOne.weapon.name)!")
+        }else if randomT > 25 && randomT < 28 && nbr > 5 {
             caracChoiceOne.weapon = randomWeapon
+            print("Joueur 2 Vouz héritez d'une une nouvelle arme \(caracChoiceTwo.weapon.name)!")
         }
     }
 /*===================================================================================
@@ -169,7 +243,7 @@ var nbr = 0
     func one(){
         
         let phrase = "Joueur 1 attaque avec \(caracChoiceOne.name) et l'arme \(caracChoiceOne.weapon.name)"
-
+        whoIhaveTwo()
         if let choice =  readLine(){
 
         
@@ -181,6 +255,10 @@ var nbr = 0
         case "2":
             print(phrase)
             caracChoiceTwo = playerTwo[1]
+            caracChoiceOne.attack(character: caracChoiceTwo)
+        case "3":
+            print(phrase)
+            caracChoiceTwo = playerTwo[2]
             caracChoiceOne.attack(character: caracChoiceTwo)
         default:
             print("Mauvaise manipulation !")
@@ -197,8 +275,8 @@ var nbr = 0
 ====================================================================================
 ===================================================================================*/
         func two(){
-            
-            let phrase = "Joueur 2 attaque avec \(caracChoiceOne.name) et l'arme \(caracChoiceOne.weapon.name)"
+            whoIhaveOne()
+            let phrase = "Joueur 2 attaque avec \(caracChoiceTwo.name) et l'arme \(caracChoiceTwo.weapon.name)"
 
             if let choice =  readLine(){
 
@@ -211,6 +289,10 @@ var nbr = 0
             case "2":
                 print(phrase)
                 caracChoiceOne = playerOne[1]
+                caracChoiceTwo.attack(character: caracChoiceOne)
+            case "3":
+                print(phrase)
+                caracChoiceOne = playerOne[2]
                 caracChoiceTwo.attack(character: caracChoiceOne)
             default:
                 print("Mauvaise manipulation !")
@@ -234,13 +316,11 @@ var nbr = 0
         }
     
     for stat in playerOne {
-        print(" le joueur \(stat.name) à fini avec\(stat.life)."
-                + "\(stat.weapon.name)")
+        print(" Le personnage du joueur 1 \(stat.name) à fini avec \(stat.life) points de vie")
     }
     
     for stat in playerTwo {
-        print(" le joueur \(stat.name) à fini avec\(stat.life) points de vie."
-                + "\(stat.weapon.name)")
+        print(" Le personnage du joueur 2 \(stat.name) à fini avec \(stat.life) points de vie.")
     }
     }
 /*===================================================================================
@@ -256,6 +336,7 @@ var nbr = 0
     while caracChoiceOne.life >= 0 && caracChoiceTwo.life >= 0 {
         
     print("Joueur 1 avec qui voulez-vous attaquer ?")
+    whoIhaveOne()
 
     randomWeapons()
     if let choice =  readLine(){
@@ -264,11 +345,15 @@ var nbr = 0
     switch choice {
     case "1":
         caracChoiceOne = playerOne[0]
-        print("Qui Voulez-Vous Attaquer ? \(playerTwo)")
+        print("Qui Voulez-Vous Attaquer ?")
         one()
     case "2":
         caracChoiceOne = playerOne[1]
-        print("Qui Voulez-Vous Attaquer ? \(playerTwo)")
+        print("Qui Voulez-Vous Attaquer ?")
+        one()
+    case "3":
+        caracChoiceOne = playerOne[2]
+        print("Qui Voulez-Vous Attaquer ?  ")
         one()
     default:
         print("Mauvaise manipulation !")
@@ -276,6 +361,7 @@ var nbr = 0
 }
      
     print("Joueur 2 avec qui voulez-vous attaquer ?")
+    whoIhaveTwo()
 
         
     if let choice =  readLine(){
@@ -284,11 +370,15 @@ var nbr = 0
     switch choice {
     case "1":
         caracChoiceTwo = playerTwo[0]
-        print("Qui Voulez-Vous Attaquer ?  \(playerOne)")
+        print("Qui Voulez-Vous Attaquer ? ")
         two()
     case "2":
         caracChoiceTwo = playerTwo[1]
-        print("Qui Voulez-Vous Attaquer ?  \(playerOne)")
+        print("Qui Voulez-Vous Attaquer ?  ")
+        two()
+    case "3":
+        caracChoiceTwo = playerTwo[2]
+        print("Qui Voulez-Vous Attaquer ?  ")
         two()
     default:
         print("Mauvaise manipulation !")

@@ -84,7 +84,7 @@ class King : Character{
     init() {
         let name = "King"//Charater name
         let life = 4190 //Character life
-        let sword = Sword() //Character weapon
+        let sword = Spear() //Character weapon
         super.init(name: name, life: life, weapon: sword)//Retour des informartions à la classe mère personnage
     }
 
@@ -95,7 +95,7 @@ class Merlin : Character{
     init() {
         let name = "Merlin"//Charater name
         let life = 4710 //Character life
-        let sword = Sword() //Character weapon
+        let sword = Aldan() //Character weapon
         super.init(name: name, life: life, weapon: sword)//Retour des informartions à la classe mère personnage
     }
 
@@ -106,7 +106,7 @@ class Gowther : Character{
     init() {
         let name = "Gowther"//Charater name
         let life = 3100 //Character life
-        let sword = Sword() //Character weapon
+        let sword = Herritt() //Character weapon
         super.init(name: name, life: life, weapon: sword)//Retour des informartions à la classe mère personnage
     }
 
@@ -117,7 +117,7 @@ class Escanor : Character{
     init() {
         let name = "Escanor"//Charater name
         let life = 3250 //Character life
-        let sword = Sword() //Character weapon
+        let sword = Lostvayne() //Character weapon
         super.init(name: name, life: life, weapon: sword)//Retour des informartions à la classe mère personnage
     }
 

@@ -90,7 +90,7 @@ class Lostvayne : Weapon {
     
     init(){
         let damage = 600 //Dégâts de l'arme
-        let name = "Étoile du Matin Aldan"//Arme aléatoire
+        let name = "Lostvayne"//Escanor
         
         
         super.init(name: name, weaponPoint: damage)//Retour des informartions à la classe arme
