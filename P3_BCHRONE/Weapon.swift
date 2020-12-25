@@ -8,10 +8,10 @@
 import Foundation
 
 class Weapon {
-    var name : String//Nom de l'arme sélectionné
-    var weaponPoint : Int//Point de l'arme sélectionnée
+    var name : String//name of the weapon
+    var weaponPoint : Int//damage of the weapon
     
-    //Initialisation des variables
+    //var init
     init(name: String,  weaponPoint: Int) {
         self.name = name
         self.weaponPoint = weaponPoint
@@ -19,120 +19,126 @@ class Weapon {
 
 }
 
-
+//Weapon of Meliodas
 class SwordOfMeliodas : Weapon {
     
     init() {
         
-        let damage = 450 //Dégâts de l'arme
-        let name = "Épée du Dragon"//Arme de Méliodas
+        let damage = 450 //damage of the weapon
+        let name = "Épée du Dragon" //name of the weapon
         
-        super.init(name: name, weaponPoint: damage)//Retour des informartions à la classe arme
+        super.init(name: name, weaponPoint: damage)//info damage and name return to mother class
     }
     
 }
 
-// Class de l'arme fusil
+//Weapon of King
 class Spear : Weapon {
     
     
     init(){
-        let damage = 300 //Dégâts de l'arme
-        let name = "Lance Spirituelle Chastiefol"//King
+        let damage = 300
+        let name = "Lance Spirituelle Chastiefol"
         
         
-        super.init(name: name, weaponPoint: damage)//Retour des informartions à la classe arme
+        super.init(name: name, weaponPoint: damage)
     }
     
 }
 
+//Weapon of Diane
 class Gideon : Weapon {
     
     
     init(){
-        let damage = 390 //Dégâts de l'arme
-        let name = "Gideon"//Diane
+        let damage = 390
+        let name = "Gideon"
         
         
-        super.init(name: name, weaponPoint: damage)//Retour des informartions à la classe arme
+        super.init(name: name, weaponPoint: damage)
     }
     
 }
 
+//Weapon of Gowther
 class Herritt : Weapon {
     
     
     init(){
-        let damage = 365 //Dégâts de l'arme
-        let name = "Double Arc Herritt"//Gowther
+        let damage = 365
+        let name = "Double Arc Herritt"
         
         
-        super.init(name: name, weaponPoint: damage)//Retour des informartions à la classe arme
+        super.init(name: name, weaponPoint: damage)
     }
     
 }
 
+//Weapon of Merlin
 class Aldan : Weapon {
     
     
     init(){
-        let damage = 400 //Dégâts de l'arme
-        let name = "Étoile du Matin Aldan"//Merlin
+        let damage = 400
+        let name = "Étoile du Matin Aldan"
         
         
-        super.init(name: name, weaponPoint: damage)//Retour des informartions à la classe arme
+        super.init(name: name, weaponPoint: damage)
     }
     
 }
 
+//Weapon of Escanor
 class Lostvayne : Weapon {
     
     
     init(){
-        let damage = 600 //Dégâts de l'arme
-        let name = "Lostvayne"//Escanor
+        let damage = 600
+        let name = "Lostvayne"
         
         
-        super.init(name: name, weaponPoint: damage)//Retour des informartions à la classe arme
+        super.init(name: name, weaponPoint: damage)
     }
     
 }
 
+//random weapon
 class Dague : Weapon {
     
     
     init(){
-        let damage = 45 //Dégâts de l'arme
-        let name = "Dague de Cenette"//Arme aléatoire
+        let damage = 45
+        let name = "Dague de Cenette"
         
         
-        super.init(name: name, weaponPoint: damage)//Retour des informartions à la classe arme
+        super.init(name: name, weaponPoint: damage)
     }
     
 }
 
 
-//Class de l'arme épée
+//random weapon
 class Sword : Weapon {
     
     init() {
         
-        let damage = 250 //Dégâts de l'arme
-        let name = "Épée de Liz"//Arme aléatoire
+        let damage = 250
+        let name = "Épée de Liz"
         
-        super.init(name: name, weaponPoint: damage)//Retour des informartions à la classe arme
+        super.init(name: name, weaponPoint: damage)
     }
     
 }
 
+//random weapon
 class Magic : Weapon {
     
     init() {
         
-        let damage = 250 //Dégâts de l'arme
-        let name = "Magie"//Arme aléatoire
+        let damage = 250
+        let name = "Magie"
         
-        super.init(name: name, weaponPoint: damage)//Retour des informartions à la classe arme
+        super.init(name: name, weaponPoint: damage)
     }
     
 }

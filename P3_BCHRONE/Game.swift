@@ -9,21 +9,21 @@ import Foundation
 
 class Player {
 
-var allCharacter = [Ban(),Merlin(),Meliodas(),Elizabeth(),Diane(),King(),Gowther(),Escanor()]
+var allCharacter = [Ban(),Merlin(),Meliodas(),Elizabeth(),Diane(),King(),Gowther(),Escanor()]//all of the characters in a tab
 var playerOne : [Character] = []
 var playerTwo : [Character] = []
 var rWeapons : [Weapon] = []
 var caracChoiceOne : Character = Meliodas()
 var caracChoiceTwo : Character = Meliodas()
-var phrase = "Sélectionner un premier personnage"
-var phrase2 = "Sélectionner un deuxième personnage"
-var phrase3 = "Sélectionner un troisième personnage"
-
+var sentence = "Sélectionner un premier personnage"
+var sentence2 = "Sélectionner un deuxième personnage"
+var sentence3 = "Sélectionner un troisième personnage"
+var rounds = 0
 var nbr = 0
 /*===================================================================================
 ====================================================================================
 ====================================================================================
-            Fonction permettant de connaitre les personnage restant
+             Function allowing to know the remaining characters.
 ====================================================================================
 ====================================================================================
 ===================================================================================*/
@@ -31,14 +31,14 @@ var nbr = 0
                     
                 for characters in allCharacter{
                     nbr += 1
-                    print("Personnage \(nbr) : \(characters.name), Vie : \(characters.life), Arme : \(characters.weapon.name), dégâts : \(characters.weapon.weaponPoint)")
+                    print("Personnage \(nbr) : \(characters.name), Vie : \(characters.life), Arme : \(characters.weapon.name), dégâts : \(characters.weapon.weaponPoint)")//Print the name of all the charaacters
                 }
         nbr = 0
      }
 /*===================================================================================
 ====================================================================================
 ====================================================================================
-            Fonction permettant de connaitre les personnage du joueur 1
+        Function allowing to know the name of each character of the player one.
 ====================================================================================
 ====================================================================================
 ===================================================================================*/
@@ -52,7 +52,7 @@ var nbr = 0
 /*===================================================================================
 ====================================================================================
 ====================================================================================
-            Fonction permettant de connaitre les personnage du joueur 2
+     Function allowing to know the name of each character of the player two.
 ====================================================================================
 ====================================================================================
 ===================================================================================*/
@@ -66,7 +66,7 @@ var nbr = 0
 /*===================================================================================
  ====================================================================================
  ====================================================================================
-            Fonction permettant à chaque joueur de choisir un personnage
+            Function allowing each player to choose a character
  ====================================================================================
  ====================================================================================
  ===================================================================================*/
@@ -76,24 +76,25 @@ var nbr = 0
     
         while playerOne.count != 3 {
             
+            //print each sentence than you see in the variable
             if playerOne.count == 0 {
-                print(phrase)
+                print(sentence)
                 charactersLeft()
             } else if playerOne.count == 1 {
-                print(phrase2)
+                print(sentence2)
                 charactersLeft()
             } else {
-                print(phrase3)
+                print(sentence3)
                 charactersLeft()
             }
             
-            if let choice = readLine(){
+            //switch allowing to select a chartacter to attack
+            if let choice = readLine(){//is used to read the input from the user.
                 switch choice {
                 case "1":
-                    //récupérer dans caracchoiceone
-                    caracChoiceOne = allCharacter[0]
-                    playerOne.insert(caracChoiceOne, at: 0)
-                    allCharacter.remove(at: nbr)
+                    caracChoiceOne = allCharacter[0]//recovery in a var the value for the tab of playerOne
+                    playerOne.insert(caracChoiceOne, at: 0)//insert the value in playerOne
+                    allCharacter.remove(at: nbr)//remove the value in allcharacter
                 case "2" :
                     nbr += 1
                     caracChoiceOne = allCharacter[1]
@@ -130,13 +131,11 @@ var nbr = 0
                     playerOne.insert(caracChoiceOne, at: 0)
                     allCharacter.remove(at: nbr)
                 default:
-                    print("Try Again")
+                    print("Mauvais choix")
                 }
                 nbr = 0
                 print("Vos personnages sont :")
                 whoIhaveOne()
-                
-                
             }
         }
             
@@ -146,20 +145,19 @@ var nbr = 0
     while playerTwo.count != 3 {
         
         if playerTwo.count == 0 {
-            print(phrase)
+            print(sentence)
             charactersLeft()
         } else if playerTwo.count == 1 {
-            print(phrase2)
+            print(sentence2)
             charactersLeft()
         } else {
-            print(phrase3)
+            print(sentence3)
             charactersLeft()
         }
         
         if let choice = readLine(){
             switch choice {
             case "1":
-                //récupérer dans caracchoiceone
                 caracChoiceTwo = allCharacter[0]
                 playerTwo.insert(caracChoiceTwo, at: 0)
                 allCharacter.remove(at: nbr)
@@ -199,7 +197,7 @@ var nbr = 0
                 playerTwo.insert(caracChoiceTwo, at: 0)
                 allCharacter.remove(at: nbr)
             default:
-                print("Try Again")
+                print("Mauvais choix !")
             }
             nbr = 0
             print("Vos personnages sont :")
@@ -212,7 +210,7 @@ var nbr = 0
 /*===================================================================================
 ====================================================================================
 ====================================================================================
-        Fonction permettant d'avoir un coffre aléatoirement dans la partie
+            Function allowing to have a random chest in the a party
 ====================================================================================
 ====================================================================================
 ===================================================================================*/
@@ -236,28 +234,28 @@ var nbr = 0
 /*===================================================================================
 ====================================================================================
 ====================================================================================
-    Fonction permettant de choisir le personnage que le joueur 1 doit attaquer
+            Function allows the player one to choose a character to attack
 ====================================================================================
 ====================================================================================
 ===================================================================================*/
     func one(){
         
-        let phrase = "Joueur 1 attaque avec \(caracChoiceOne.name) et l'arme \(caracChoiceOne.weapon.name)"
+        let sentence = "Joueur 1 attaque avec \(caracChoiceOne.name) et l'arme \(caracChoiceOne.weapon.name)"
         whoIhaveTwo()
         if let choice =  readLine(){
 
         
         switch choice {
         case "1":
-            print(phrase)
+            print(sentence)
             caracChoiceTwo = playerTwo[0]
             caracChoiceOne.attack(character: caracChoiceTwo)
         case "2":
-            print(phrase)
+            print(sentence)
             caracChoiceTwo = playerTwo[1]
             caracChoiceOne.attack(character: caracChoiceTwo)
         case "3":
-            print(phrase)
+            print(sentence)
             caracChoiceTwo = playerTwo[2]
             caracChoiceOne.attack(character: caracChoiceTwo)
         default:
@@ -270,28 +268,28 @@ var nbr = 0
 /*===================================================================================
 ====================================================================================
 ====================================================================================
-    Fonction permettant de choisir le personnage que le joueur 2 doit attaquer
+     Function allows the player two to choose a character to attack
 ====================================================================================
 ====================================================================================
 ===================================================================================*/
         func two(){
             whoIhaveOne()
-            let phrase = "Joueur 2 attaque avec \(caracChoiceTwo.name) et l'arme \(caracChoiceTwo.weapon.name)"
+            let sentence = "Joueur 2 attaque avec \(caracChoiceTwo.name) et l'arme \(caracChoiceTwo.weapon.name)"
 
             if let choice =  readLine(){
 
             
             switch choice {
             case "1":
-                print(phrase)
+                print(sentence)
                 caracChoiceOne = playerOne[0]
                 caracChoiceTwo.attack(character: caracChoiceOne)
             case "2":
-                print(phrase)
+                print(sentence)
                 caracChoiceOne = playerOne[1]
                 caracChoiceTwo.attack(character: caracChoiceOne)
             case "3":
-                print(phrase)
+                print(sentence)
                 caracChoiceOne = playerOne[2]
                 caracChoiceTwo.attack(character: caracChoiceOne)
             default:
@@ -304,15 +302,15 @@ var nbr = 0
 /*===================================================================================
 ====================================================================================
 ====================================================================================
-        Fonction permettant de savoir qui remporte la partie et les stats
+     Function allows to know who is the winner and print the stats of the game
 ====================================================================================
 ====================================================================================
 ===================================================================================*/
     func win(){
         if caracChoiceOne.life <= 0 {
-            print("En \(nbr) tours le joueur 2 à gagner")
+            print("En \(rounds) tours le joueur 2 à gagner")
             }else {
-            print("En \(nbr) tours le joueur 1 à gagner")
+            print("En \(rounds) tours le joueur 1 à gagner")
         }
     
     for stat in playerOne {
@@ -326,7 +324,7 @@ var nbr = 0
 /*===================================================================================
 ====================================================================================
 ====================================================================================
-                    Fonction permettant de lancer jeu
+                    Function allows to launch the game
 ====================================================================================
 ====================================================================================
 ===================================================================================*/
@@ -385,7 +383,7 @@ var nbr = 0
     }
 
 }
-nbr += 1
+rounds += 1
 
 }
 win()

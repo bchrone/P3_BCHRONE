@@ -18,13 +18,21 @@ class Character {
         self.life = life
         self.weapon = weapon
     }
+    /*===================================================================================
+    ====================================================================================
+    ====================================================================================
+                    Function allows to attack with character parameter
+    ====================================================================================
+    ====================================================================================
+    ===================================================================================*/
     
     func attack(character: Character) {
         character.life -= weapon.weaponPoint
         print("\(character.name) à été attaquer et à maintenant \(character.life) point de vie ! ")
         }
 }
-//Premier Personnage
+
+//first character
 class Elizabeth: Character{
     
     var heal = 220
