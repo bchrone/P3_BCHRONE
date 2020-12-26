@@ -12,6 +12,7 @@ class Character {
     var name : String
     var life : Int
     var weapon : Weapon //Déclaration de la variable weapon avec comme type la class Weapon
+    var heal = 220
     
     init(name: String, life: Int, weapon: Weapon) {
         self.name = name
@@ -30,12 +31,13 @@ class Character {
         character.life -= weapon.weaponPoint
         print("\(character.name) à été attaquer et à maintenant \(character.life) point de vie ! ")
         }
+
+    
 }
 
 //first character
 class Elizabeth: Character{
     
-    var heal = 220
 
     
     init (){
@@ -44,14 +46,15 @@ class Elizabeth: Character{
         let gun = Magic()
         super.init(name: name, life: life, weapon: gun)//Retour des informartions à la classe personnage
     }
-    //cette fonction attaque sera excuter à la place de la fonction qui appartient à Character
-    func heal(character: Character) {
-        
+    //allow Elizabeth to heal
+    override func attack(character: Character){
         character.life += heal
-        print("\(name) a récupérer \(heal) points de vie")
+        print("\(character.name) a été soigné de \(heal) points de vie et a maintenant \(character.life) points de vie.")
+    }
+    
     }
 
-}
+
 
 //Deuxieme personnage
 class Meliodas : Character{

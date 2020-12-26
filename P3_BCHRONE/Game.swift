@@ -31,7 +31,10 @@ var nbr = 0
                     
                 for characters in allCharacter{
                     nbr += 1
-                    print("Personnage \(nbr) : \(characters.name), Vie : \(characters.life), Arme : \(characters.weapon.name), dégâts : \(characters.weapon.weaponPoint)")//Print the name of all the charaacters
+                    print("Personnage \(nbr) : \(characters.name), Vie : \(characters.life), Arme : \(characters.weapon.name), dégâts : \(characters.weapon.weaponPoint)")//Print the name of all the characters
+                    if characters.name == "Élizabeth" {
+                        print("Ce personnage soigne uniquement")
+                    }
                 }
         nbr = 0
      }
@@ -240,7 +243,7 @@ var nbr = 0
 ===================================================================================*/
     func one(){
         
-        let sentence = "Joueur 1 attaque avec \(caracChoiceOne.name) et l'arme \(caracChoiceOne.weapon.name)"
+        let sentence = "Joueur 1 utilise avec \(caracChoiceOne.name) et l'arme \(caracChoiceOne.weapon.name)"
         whoIhaveTwo()
         if let choice =  readLine(){
 
@@ -274,7 +277,7 @@ var nbr = 0
 ===================================================================================*/
         func two(){
             whoIhaveOne()
-            let sentence = "Joueur 2 attaque avec \(caracChoiceTwo.name) et l'arme \(caracChoiceTwo.weapon.name)"
+            let sentence = "Joueur 2 utilise avec \(caracChoiceTwo.name) et l'arme \(caracChoiceTwo.weapon.name)"
 
             if let choice =  readLine(){
 
@@ -335,23 +338,28 @@ var nbr = 0
         
     print("Joueur 1 avec qui voulez-vous attaquer ?")
     whoIhaveOne()
-
-    randomWeapons()
     if let choice =  readLine(){
+        //si readLine() = Elizabeth alors attaque ou soin
      
         
     switch choice {
     case "1":
         caracChoiceOne = playerOne[0]
-        print("Qui Voulez-Vous Attaquer ?")
+        if caracChoiceOne.name == "Élizabeth" {
+            print("Qui voulez vous soigner ?")
+        }else { print("Qui Voulez-Vous Attaquer ?")}
         one()
     case "2":
         caracChoiceOne = playerOne[1]
-        print("Qui Voulez-Vous Attaquer ?")
+        if caracChoiceOne.name == "Élizabeth" {
+            print("Qui voulez vous soigner ?")
+        }else { print("Qui Voulez-Vous Attaquer ?")}
         one()
     case "3":
         caracChoiceOne = playerOne[2]
-        print("Qui Voulez-Vous Attaquer ?  ")
+        if caracChoiceOne.name == "Élizabeth" {
+            print("Qui voulez vous soigner ?")
+        }else { print("Qui Voulez-Vous Attaquer ?")}
         one()
     default:
         print("Mauvaise manipulation !")
@@ -368,15 +376,21 @@ var nbr = 0
     switch choice {
     case "1":
         caracChoiceTwo = playerTwo[0]
-        print("Qui Voulez-Vous Attaquer ? ")
+        if caracChoiceTwo.name == "Élizabeth" {
+            print("Qui voulez vous soigner ?")
+        }else { print("Qui Voulez-Vous Attaquer ?")}
         two()
     case "2":
         caracChoiceTwo = playerTwo[1]
-        print("Qui Voulez-Vous Attaquer ?  ")
+        if caracChoiceTwo.name == "Élizabeth" {
+            print("Qui voulez vous soigner ?")
+        }else { print("Qui Voulez-Vous Attaquer ?")}
         two()
     case "3":
         caracChoiceTwo = playerTwo[2]
-        print("Qui Voulez-Vous Attaquer ?  ")
+        if caracChoiceTwo.name == "Élizabeth" {
+            print("Qui voulez vous soigner ?")
+        }else { print("Qui Voulez-Vous Attaquer ?")}
         two()
     default:
         print("Mauvaise manipulation !")
@@ -384,6 +398,8 @@ var nbr = 0
 
 }
 rounds += 1
+randomWeapons()
+
 
 }
 win()
