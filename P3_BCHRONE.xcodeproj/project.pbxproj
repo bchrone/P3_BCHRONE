@@ -11,6 +11,8 @@
 		5FC1ED432593501D00C5F52F /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC1ED422593501D00C5F52F /* Weapon.swift */; };
 		5FC1ED462593507400C5F52F /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC1ED452593507400C5F52F /* Character.swift */; };
 		5FC1ED49259350A400C5F52F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC1ED48259350A400C5F52F /* Game.swift */; };
+		6137C170259CA17600473FA6 /* Warlike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6137C16F259CA17600473FA6 /* Warlike.swift */; };
+		6137C17C259F73E900473FA6 /* Healer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6137C17B259F73E900473FA6 /* Healer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +33,8 @@
 		5FC1ED422593501D00C5F52F /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		5FC1ED452593507400C5F52F /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		5FC1ED48259350A400C5F52F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		6137C16F259CA17600473FA6 /* Warlike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warlike.swift; sourceTree = "<group>"; };
+		6137C17B259F73E900473FA6 /* Healer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Healer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +69,20 @@
 			children = (
 				5FC1ED3A25934FF900C5F52F /* main.swift */,
 				5FC1ED422593501D00C5F52F /* Weapon.swift */,
-				5FC1ED452593507400C5F52F /* Character.swift */,
 				5FC1ED48259350A400C5F52F /* Game.swift */,
+				6137C172259CA1DD00473FA6 /* Character */,
 			);
 			path = P3_BCHRONE;
+			sourceTree = "<group>";
+		};
+		6137C172259CA1DD00473FA6 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				5FC1ED452593507400C5F52F /* Character.swift */,
+				6137C16F259CA17600473FA6 /* Warlike.swift */,
+				6137C17B259F73E900473FA6 /* Healer.swift */,
+			);
+			path = Character;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,7 +112,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					5FC1ED3625934FF900C5F52F = {
 						CreatedOnToolsVersion = 12.2;
@@ -129,6 +143,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FC1ED462593507400C5F52F /* Character.swift in Sources */,
+				6137C17C259F73E900473FA6 /* Healer.swift in Sources */,
+				6137C170259CA17600473FA6 /* Warlike.swift in Sources */,
 				5FC1ED3B25934FF900C5F52F /* main.swift in Sources */,
 				5FC1ED432593501D00C5F52F /* Weapon.swift in Sources */,
 				5FC1ED49259350A400C5F52F /* Game.swift in Sources */,
@@ -256,6 +272,7 @@
 		5FC1ED3F25934FF900C5F52F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VBG9L924JC;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -267,6 +284,7 @@
 		5FC1ED4025934FF900C5F52F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VBG9L924JC;
 				ENABLE_HARDENED_RUNTIME = YES;

@@ -1,0 +1,30 @@
+//
+//  Diane.swift
+//  P3_BCHRONE
+//
+//  Created by Bryan CHRONE on 30/12/2020.
+//
+
+import Foundation
+
+
+class Warlike : Character {
+    
+            
+    override init (name: String, life: Int, type : String, weapon : Weapon) {
+        let name = name//Character name
+        let life = life //Character life
+        let type = "Guerrier"
+        let weapon = weapon
+    super.init(name: name, life: life, type: type, weapon : weapon)
+    }
+    
+    override func attack(character: Character) {
+        character.life -= weapon.weaponPoint
+        print("\(character.name) à été attaquer et à maintenant \(character.life) point de vie ! ")
+    }
+    
+    
+}
+
+
