@@ -22,7 +22,7 @@ class Healer: Character {
     
    override func healing(character : Character){
     character.life += heal
-    print("\(character.name) à été soigné de \(heal) point de vie ! ")
+    print("\(character.name) à été soigné(e) de \(heal) point de vie ! ")
     print("\(character.name) a maintenant \(character.life)")
     }
     

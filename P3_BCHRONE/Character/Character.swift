@@ -36,8 +36,12 @@ class Character {
     
     func attack(character: Character) {
         character.life -= weapon.weaponPoint
-        print("\(character.name) à été attaquer et à maintenant \(character.life) point de vie ! ")
+        
+        if character.life > 0 {
+        print("\(character.name) à été attaqué(e) et à maintenant \(character.life) point de vie ! ")
         }
+        
+    }
     
     
     

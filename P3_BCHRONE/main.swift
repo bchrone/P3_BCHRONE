@@ -12,12 +12,12 @@ var player2 = Healer(name: "Chouette", life: 220, weapon: Magic())
 player.attack(character: player2)
 */
 
-var go = Game(allCharacter: [Warlike(name: "Méliodas", life: 2500, type: "Guerrier", weapon: Sword()),
-                             Healer(name: "ElI", life: 2500, type: "Guérisseur", weapon: Sword()),
-                             Healer(name: "Merline", life: 3000, type: "Guérisseur", weapon: Sword()),
-                             Warlike(name: "King", life: 2000, type: "Guerrier", weapon: Sword()),
-                             Warlike(name: "Ban", life: 3000, type: "Guerrier", weapon: Sword()),
-                             Warlike(name: "Escanor", life: 4000, type: "Guerrier", weapon: Sword()),
-                             Healer(name: "Diane", life: 3527, type: "Guérisseur", weapon: Sword()),])
+var go = Game(allCharacter: [Warlike(name: "Méliodas", life: 200, type: "Guerrier", weapon: Sword()),
+                             Healer(name: "ElI", life: 200, type: "Guérisseur", weapon: Sword()),
+                             Healer(name: "Merline", life: 300, type: "Guérisseur", weapon: Sword()),
+                             Warlike(name: "King", life: 200, type: "Guerrier", weapon: Sword()),
+                             Warlike(name: "Ban", life: 300, type: "Guerrier", weapon: Sword()),
+                             Warlike(name: "Escanor", life: 400, type: "Guerrier", weapon: Sword()),
+                             Healer(name: "Diane", life: 357, type: "Guérisseur", weapon: Sword()),])
 go.chooseCharacters()
 go.letsPlay()

@@ -62,6 +62,8 @@
      // MARK: - Function allowing each player to choose a character
 
      func chooseCharacters(){
+        
+        
             
             print("Joueur 1 Sélectionné vos personnages !")
         
@@ -219,40 +221,12 @@
             }
         }
 
-    //MARK: - Function allows the player one to choose a character to attack
-
-        func attackOne(){
-            
-                let sentence = "Joueur 1 utilise avec \(caracChoiceOne.name) et l'arme \(caracChoiceOne.weapon.name)"
-                whoIhaveTwo()
-                if let choice =  readLine(){
-
-                
-                switch choice {
-                case "1":
-                    print(sentence)
-                    caracChoiceTwo = playerTwo[0]
-                    caracChoiceOne.attack(character: caracChoiceTwo)
-                case "2":
-                    print(sentence)
-                    caracChoiceTwo = playerTwo[1]
-                    caracChoiceOne.attack(character: caracChoiceTwo)
-                case "3":
-                    print(sentence)
-                    caracChoiceTwo = playerTwo[2]
-                    caracChoiceOne.attack(character: caracChoiceTwo)
-                default:
-                    print("Mauvaise manipulation !")
-                }
-                
-                }
-               
-        }
-        
        
     //MARK: - Function allows the player one to choose a character to heal
        
         func attackOrHealOne() {
+            
+            var index = 0
         
             
                 if caracChoiceOne.type == "Guérisseur" {
@@ -274,14 +248,17 @@
                             print(sentence)
                             caracChoiceTwo = playerTwo[0]
                             caracChoiceOne.attack(character: caracChoiceTwo)
+                            index = 0
                         case "2":
                             print(sentence)
                             caracChoiceTwo = playerTwo[1]
                             caracChoiceOne.attack(character: caracChoiceTwo)
+                            index = 1
                         case "3":
                             print(sentence)
                             caracChoiceTwo = playerTwo[2]
                             caracChoiceOne.attack(character: caracChoiceTwo)
+                            index = 2
                         default:
                             print("Mauvaise manipulation !")
         }
@@ -316,6 +293,13 @@
                         print("Mauvaise manipulation !")
         }
         }
+                    if caracChoiceTwo.life <= 0 && playerTwo.count == 3{
+                        playerTwo.remove(at: index)
+                        print("\(caracChoiceTwo.name) est mort(e) !")
+                    }else if caracChoiceTwo.life <= 0 && (playerTwo.count == 2 || playerTwo.count == 1) {
+                        playerTwo.remove(at: index-1)
+                        print("\(caracChoiceTwo.name) est mort(e) !")
+                    }
         }
                  else {
                     whoIhaveTwo()
@@ -329,19 +313,29 @@
                         print(sentence)
                         caracChoiceTwo = playerTwo[0]
                         caracChoiceOne.attack(character: caracChoiceTwo)
+                        index = 0
                     case "2":
                         print(sentence)
                         caracChoiceTwo = playerTwo[1]
                         caracChoiceOne.attack(character: caracChoiceTwo)
+                        index = 1
                     case "3":
                         print(sentence)
                         caracChoiceTwo = playerTwo[2]
                         caracChoiceOne.attack(character: caracChoiceTwo)
+                        index = 2
                     default:
                         print("Mauvaise manipulation !")
                     }
                     }
-                 }
+                    if caracChoiceTwo.life <= 0 {
+                        playerTwo.remove(at: index)
+                        print("\(caracChoiceTwo.name) est mort(e) !")
+                    }else if caracChoiceTwo.life <= 0 && (playerTwo.count == 2 || playerTwo.count == 1) {
+                        playerTwo.remove(at: index-1)
+                        print("\(caracChoiceTwo.name) est mort(e) !")
+                    }
+            }
         }
                 
                     
@@ -352,6 +346,8 @@
         //MARK: - Function allows the player two to choose a character to heal
         func attackOrHealTwo() {
         
+            var index = 0
+            
             if caracChoiceTwo.type == "Guérisseur" {
                 
                 print ("Voulez-vous 1 : attaquer ou 2 : soigner ?")
@@ -371,14 +367,17 @@
                         print(sentence)
                         caracChoiceOne = playerOne[0]
                         caracChoiceTwo.attack(character: caracChoiceOne)
+                        index = 0
                     case "2":
                         print(sentence)
                         caracChoiceOne = playerOne[1]
                         caracChoiceTwo.attack(character: caracChoiceOne)
+                        index = 1
                     case "3":
                         print(sentence)
                         caracChoiceOne = playerOne[2]
                         caracChoiceTwo.attack(character: caracChoiceOne)
+                        index = 2
                     default:
                         print("Mauvaise manipulation !")
                     }
@@ -413,6 +412,13 @@
                 }
             
         }
+                if caracChoiceOne.life <= 0 {
+                    playerOne.remove(at: index)
+                    print("\(caracChoiceOne.name) est mort(e) !")
+                }else if caracChoiceOne.life <= 0 && (playerOne.count == 2 || playerOne.count == 1) {
+                    playerOne.remove(at: index-1)
+                    print("\(caracChoiceOne.name) est mort(e) !")
+                }
             } else {
                 let sentence = "Joueur 2 utilise \(caracChoiceTwo.name) et l'arme \(caracChoiceTwo.weapon.name)"
                 whoIhaveOne()
@@ -425,29 +431,31 @@
                     print(sentence)
                     caracChoiceOne = playerOne[0]
                     caracChoiceTwo.attack(character: caracChoiceOne)
+                    index = 0
                 case "2":
                     print(sentence)
                     caracChoiceOne = playerOne[1]
                     caracChoiceTwo.attack(character: caracChoiceOne)
+                    index = 1
                 case "3":
                     print(sentence)
                     caracChoiceOne = playerOne[2]
                     caracChoiceTwo.attack(character: caracChoiceOne)
+                    index = 2
                 default:
                     print("Mauvaise manipulation !")
                 }
                 
                 }
-            }
+                if caracChoiceOne.life <= 0 {
+                    playerOne.remove(at: index)
+                    print("\(caracChoiceOne.name) est mort(e) !")
+                }else if caracChoiceOne.life <= 0 && (playerOne.count == 2 || playerOne.count == 1) {
+                    playerOne.remove(at: index-1)
+                    print("\(caracChoiceOne.name) est mort(e) !")
+                }            }
             
         }
-
-         //MARK: - Function allows the player two to choose a character to attack
-
-            func attackTwo(){
-                
-                
-            }
 
          //MARK: -  Function allows to know who is the winner and print the stats of the game
 
@@ -471,7 +479,12 @@
 
         func letsPlay(){
             
-            while caracChoiceOne.life >= 0 && caracChoiceTwo.life >= 0 {
+            
+            while playerOne.count != 0 && playerTwo.count != 0{
+                 
+            //}
+            
+            //while caracChoiceOne.life > 0 && caracChoiceTwo.life > 0 {
             
         whoIhaveOne()
         print("Joueur 1 avec qui voulez-vous jouer ?")
@@ -484,7 +497,6 @@
         case "2":
             caracChoiceOne = playerOne[1]
             attackOrHealOne()
-
         case "3":
             caracChoiceOne = playerOne[2]
             attackOrHealOne()
@@ -492,6 +504,9 @@
             print("Mauvaise manipulation !")
         }
     }
+
+
+                
          
         whoIhaveTwo()
         print("Joueur 2 avec qui voulez-vous jouer ?")
