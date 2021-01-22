@@ -13,8 +13,8 @@
         var playerOne : [Character]
         var playerTwo : [Character]
         var rWeapons : [Weapon]
-        var caracChoiceOne : Character
-        var caracChoiceTwo : Character
+        var characChoiceOne : Character
+        var characChoiceTwo : Character
         var rounds : Int
         var nbr : Int
 
@@ -22,9 +22,9 @@
                 self.allCharacter = allCharacter
                 self.playerOne = []
                 self.playerTwo = []
-                self.rWeapons = []
-                self.caracChoiceOne = Warlike(name: "Eli", life: 2000, type: "Guérisseur", weapon: Gideon())
-                self.caracChoiceTwo = Warlike(name: "Eli", life: 2000, type: "Guérisseur", weapon: Gideon())
+                self.rWeapons = [Sword(), Magic(), Dague()]
+                self.characChoiceOne = Warlike(name: "Eli", life: 2000, type: "Guérisseur", weapon: Gideon())
+                self.characChoiceTwo = Warlike(name: "Eli", life: 2000, type: "Guérisseur", weapon: Gideon())
                 self.rounds = 0
                 self.nbr = 0
             }
@@ -63,22 +63,18 @@
 
      func chooseCharacters(){
         
-        
-            
-            print("Joueur 1 Sélectionné vos personnages !")
-        
             while playerOne.count != 3 {
-                
+            
                 //print each sentence than you see in the variable
                 if playerOne.count == 0 {
                     charactersLeft()
-            print("Sélectionner un premier personnage")
+            print("Joueur 1 sélectionner un premier personnage")
                 } else if playerOne.count == 1 {
                     charactersLeft()
-            print("Sélectionner un deuxième personnage")
+            print("Joueur 1 sélectionner un deuxième personnage")
                 } else {
                     charactersLeft()
-                    print("Sélectionner un troisième personnage")
+                    print("Joueur 1 sélectionner un troisième personnage")
 
                 }
                 
@@ -86,43 +82,43 @@
                 if let choice = readLine(){//is used to read the input from the user.
                     switch choice {
                     case "1":
-                        caracChoiceOne = allCharacter[0]//recovery in a var the value for the tab of playerOne
-                        playerOne.insert(caracChoiceOne, at: 0)//insert the value in playerOne
+                        characChoiceOne = allCharacter[0]//recovery in a var the value for the tab of playerOne
+                        playerOne.insert(characChoiceOne, at: 0)//insert the value in playerOne
                         allCharacter.remove(at: nbr)//remove the value in allcharacter
                     case "2" :
                         nbr += 1
-                        caracChoiceOne = allCharacter[1]
-                        playerOne.insert(caracChoiceOne, at: 0)
+                        characChoiceOne = allCharacter[1]
+                        playerOne.insert(characChoiceOne, at: 0)
                         allCharacter.remove(at: nbr)
                     case "3":
                         nbr += 2
-                        caracChoiceOne = allCharacter[2]
-                        playerOne.insert(caracChoiceOne, at: 0)
+                        characChoiceOne = allCharacter[2]
+                        playerOne.insert(characChoiceOne, at: 0)
                         allCharacter.remove(at: nbr)
                     case "4" :
                         nbr += 3
-                        caracChoiceOne = allCharacter[3]
-                        playerOne.insert(caracChoiceOne, at: 0)
+                        characChoiceOne = allCharacter[3]
+                        playerOne.insert(characChoiceOne, at: 0)
                         allCharacter.remove(at: nbr)
                     case "5":
                         nbr += 4
-                        caracChoiceOne = allCharacter[4]
-                        playerOne.insert(caracChoiceOne, at: 0)
+                        characChoiceOne = allCharacter[4]
+                        playerOne.insert(characChoiceOne, at: 0)
                         allCharacter.remove(at: nbr)
                     case "6" :
                         nbr += 5
-                        caracChoiceOne = allCharacter[5]
-                        playerOne.insert(caracChoiceOne, at: 0)
+                        characChoiceOne = allCharacter[5]
+                        playerOne.insert(characChoiceOne, at: 0)
                         allCharacter.remove(at: nbr)
                     case "7":
                         nbr += 6
-                        caracChoiceOne = allCharacter[6]
-                        playerOne.insert(caracChoiceOne, at: 0)
+                        characChoiceOne = allCharacter[6]
+                        playerOne.insert(characChoiceOne, at: 0)
                         allCharacter.remove(at: nbr)
                     case "8" :
                         nbr += 7
-                        caracChoiceOne = allCharacter[7]
-                        playerOne.insert(caracChoiceOne, at: 0)
+                        characChoiceOne = allCharacter[7]
+                        playerOne.insert(characChoiceOne, at: 0)
                         allCharacter.remove(at: nbr)
                     default:
                         print("Mauvais choix")
@@ -133,62 +129,60 @@
                 }
             }
                 
-            print("Joueur 2 Sélectionné votre personnage !")
-
         
         while playerTwo.count != 3 {
             
             if playerTwo.count == 0 {
                 charactersLeft()
-                print("Sélectionner un premier personnage")
+                print("Joueur 2 sélectionner un premier personnage")
             } else if playerTwo.count == 1 {
                 charactersLeft()
-                print("Sélectionner un deuxième personnage")
+                print("Joueur 2 sélectionner un deuxième personnage")
             } else {
                 charactersLeft()
-                print("Sélectionner un troisième personnage")
+                print("Joueur 2 sélectionner un troisième personnage")
             }
             
             if let choice = readLine(){
                 switch choice {
                 case "1":
-                    caracChoiceTwo = allCharacter[0]
-                    playerTwo.insert(caracChoiceTwo, at: 0)
+                    characChoiceTwo = allCharacter[0]
+                    playerTwo.insert(characChoiceTwo, at: 0)
                     allCharacter.remove(at: nbr)
                 case "2" :
                     nbr += 1
-                    caracChoiceTwo = allCharacter[1]
-                    playerTwo.insert(caracChoiceTwo, at: 0)
+                    characChoiceTwo = allCharacter[1]
+                    playerTwo.insert(characChoiceTwo, at: 0)
                     allCharacter.remove(at: nbr)
                 case "3":
                     nbr += 2
-                    caracChoiceTwo = allCharacter[2]
-                    playerTwo.insert(caracChoiceTwo, at: 0)
+                    characChoiceTwo = allCharacter[2]
+                    playerTwo.insert(characChoiceTwo, at: 0)
                     allCharacter.remove(at: nbr)
                 case "4" :
                     nbr += 3
-                    caracChoiceTwo = allCharacter[3]
-                    playerTwo.insert(caracChoiceTwo, at: 0)
+                    characChoiceTwo = allCharacter[3]
+                    playerTwo.insert(characChoiceTwo, at: 0)
                     allCharacter.remove(at: nbr)
                 case "5":
                     nbr += 4
-                    caracChoiceTwo = allCharacter[4]
-                    playerTwo.insert(caracChoiceTwo, at: 0)
+                    characChoiceTwo = allCharacter[4]
+                    playerTwo.insert(characChoiceTwo, at: 0)
                     allCharacter.remove(at: nbr)
                 case "6" :
                     nbr += 5
-                    caracChoiceTwo = allCharacter[5]
-                    playerTwo.insert(caracChoiceTwo, at: 0)
+                    characChoiceTwo = allCharacter[5]
+                    playerTwo.insert(characChoiceTwo, at: 0)
                     allCharacter.remove(at: nbr)
                 case "7":
                     nbr += 6
-                    caracChoiceTwo = allCharacter[6]
-                    playerTwo.insert(caracChoiceTwo, at: 0)
+                    characChoiceTwo = allCharacter[6]
+                    playerTwo.insert(characChoiceTwo, at: 0)
                     allCharacter.remove(at: nbr)
                 case "8" :
                     nbr += 7
-                    caracChoiceTwo = allCharacter[7]
-                    playerTwo.insert(caracChoiceTwo, at: 0)
+                    characChoiceTwo = allCharacter[7]
+                    playerTwo.insert(characChoiceTwo, at: 0)
                     allCharacter.remove(at: nbr)
                 default:
                     print("Mauvais choix !")
@@ -204,20 +198,19 @@
     
     //MARK: - Function allowing to have a random chest in the a party
         func randomWeapons(){
-            //rWeapons += [()]
-            rWeapons += [Sword()]
+            //rWeapons += [Sword()]
             let randomIndex = Int(arc4random_uniform(UInt32(rWeapons.count)))
             let randomWeapon = rWeapons [randomIndex]
             let randomT = Int(arc4random_uniform(UInt32(30)))//tour aléatoire
-            // faire avec modulo
             
-            
-            if randomT < 5 && randomT > 2 && nbr > 5{
-                caracChoiceOne.weapon = randomWeapon
-                print("Joueur 1 Vouz héritez d'une une nouvelle arme qui est \(caracChoiceOne.weapon.name)!")
-            }else if randomT > 25 && randomT < 28 && nbr > 5 {
-                caracChoiceOne.weapon = randomWeapon
-                print("Joueur 2 Vouz héritez d'une une nouvelle arme \(caracChoiceTwo.weapon.name)!")
+            if randomT <= 5 && randomT >= 2 {
+                print("Joueur 1 vous avez trouvé un coffre ! L'arme de votre personnage \(characChoiceOne.name), \(characChoiceOne.weapon.name)  de \(characChoiceOne.weapon.weaponPoint) de dégâts sera remplacée!")
+                characChoiceOne.weapon = randomWeapon
+                print("Félicitation vous héritez d'une une nouvelle arme qui est \(characChoiceOne.weapon.name) avec \(characChoiceOne.weapon.weaponPoint) de dégâts!")
+            }else if randomT >= 25 && randomT <= 28 {
+                print("Joueur 2 vous avez trouvé un coffre ! L'arme de votre personnage \(characChoiceTwo.name),\(characChoiceTwo.weapon.name)  de \(characChoiceTwo.weapon.weaponPoint) de dégâts sera remplacée!")
+                characChoiceTwo.weapon = randomWeapon
+                print("Félicitation vous héritez d'une une nouvelle arme qui est \(characChoiceTwo.weapon.name) avec \(characChoiceOne.weapon.weaponPoint) de dégâts!")
             }
         }
 
@@ -229,7 +222,7 @@
             var index = 0
         
             
-                if caracChoiceOne.type == "Guérisseur" {
+                if characChoiceOne.type == "Guérisseur" {
                     
                     print ("Voulez-vous 1 : attaquer ou 2 : soigner ?")
                 
@@ -238,7 +231,7 @@
                     switch choice {
                     case "1":
                         whoIhaveTwo()
-                        let sentence = "Joueur 1 utilise avec \(caracChoiceOne.name) et l'arme \(caracChoiceOne.weapon.name)"
+                        let sentence = "Joueur 1 utilise avec \(characChoiceOne.name) et l'arme \(characChoiceOne.weapon.name)"
                         print("Qui voulez-vous attaquer ?")
                         
                         if let choice =  readLine(){
@@ -246,18 +239,18 @@
                         switch choice {
                         case "1":
                             print(sentence)
-                            caracChoiceTwo = playerTwo[0]
-                            caracChoiceOne.attack(character: caracChoiceTwo)
+                            characChoiceTwo = playerTwo[0]
+                            characChoiceOne.attack(character: characChoiceTwo)
                             index = 0
                         case "2":
                             print(sentence)
-                            caracChoiceTwo = playerTwo[1]
-                            caracChoiceOne.attack(character: caracChoiceTwo)
+                            characChoiceTwo = playerTwo[1]
+                            characChoiceOne.attack(character: characChoiceTwo)
                             index = 1
                         case "3":
                             print(sentence)
-                            caracChoiceTwo = playerTwo[2]
-                            caracChoiceOne.attack(character: caracChoiceTwo)
+                            characChoiceTwo = playerTwo[2]
+                            characChoiceOne.attack(character: characChoiceTwo)
                             index = 2
                         default:
                             print("Mauvaise manipulation !")
@@ -265,7 +258,7 @@
         }
                         
                     case "2":
-                        let sentence = "Joueur 1 soigne avec \(caracChoiceOne.name) "
+                        let sentence = "Joueur 1 soigne avec \(characChoiceOne.name) "
                         whoIhaveOne()
                         print("Sélectionner le joueur à soigner")
                         
@@ -274,16 +267,16 @@
                         switch choice {
                         case "1":
                             print(sentence)
-                            caracChoiceOne = playerOne[0]
-                            caracChoiceOne.healing(character: caracChoiceOne)
+                            characChoiceOne = playerOne[0]
+                            characChoiceOne.healing(character: characChoiceOne)
                         case "2":
                             print(sentence)
-                            caracChoiceOne = playerOne[1]
-                            caracChoiceOne.healing(character: caracChoiceOne)
+                            characChoiceOne = playerOne[1]
+                            characChoiceOne.healing(character: characChoiceOne)
                         case "3":
                             print(sentence)
-                            caracChoiceOne = playerOne[2]
-                            caracChoiceOne.healing(character: caracChoiceOne)
+                            characChoiceOne = playerOne[2]
+                            characChoiceOne.healing(character: characChoiceOne)
                         default:
                             print("Mauvaise manipulation !")
                         
@@ -293,17 +286,17 @@
                         print("Mauvaise manipulation !")
         }
         }
-                    if caracChoiceTwo.life <= 0 && playerTwo.count == 3{
+                    if characChoiceTwo.life <= 0 && playerTwo.count == 3{
                         playerTwo.remove(at: index)
-                        print("\(caracChoiceTwo.name) est mort(e) !")
-                    }else if caracChoiceTwo.life <= 0 && (playerTwo.count == 2 || playerTwo.count == 1) {
+                        print("\(characChoiceTwo.name) est mort(e) !")
+                    }else if characChoiceTwo.life <= 0 && (playerTwo.count == 2 || playerTwo.count == 1) {
                         playerTwo.remove(at: index-1)
-                        print("\(caracChoiceTwo.name) est mort(e) !")
+                        print("\(characChoiceTwo.name) est mort(e) !")
                     }
         }
                  else {
                     whoIhaveTwo()
-                    let sentence = "Joueur 1 utilise avec \(caracChoiceOne.name) et l'arme \(caracChoiceOne.weapon.name)"
+                    let sentence = "Joueur 1 utilise avec \(characChoiceOne.name) et l'arme \(characChoiceOne.weapon.name)"
                     print("Qui voulez-vous attaquer ?")
 
                     if let choice =  readLine(){
@@ -311,29 +304,29 @@
                     switch choice {
                     case "1":
                         print(sentence)
-                        caracChoiceTwo = playerTwo[0]
-                        caracChoiceOne.attack(character: caracChoiceTwo)
+                        characChoiceTwo = playerTwo[0]
+                        characChoiceOne.attack(character: characChoiceTwo)
                         index = 0
                     case "2":
                         print(sentence)
-                        caracChoiceTwo = playerTwo[1]
-                        caracChoiceOne.attack(character: caracChoiceTwo)
+                        characChoiceTwo = playerTwo[1]
+                        characChoiceOne.attack(character: characChoiceTwo)
                         index = 1
                     case "3":
                         print(sentence)
-                        caracChoiceTwo = playerTwo[2]
-                        caracChoiceOne.attack(character: caracChoiceTwo)
+                        characChoiceTwo = playerTwo[2]
+                        characChoiceOne.attack(character: characChoiceTwo)
                         index = 2
                     default:
                         print("Mauvaise manipulation !")
                     }
                     }
-                    if caracChoiceTwo.life <= 0 {
+                    if characChoiceTwo.life <= 0 {
                         playerTwo.remove(at: index)
-                        print("\(caracChoiceTwo.name) est mort(e) !")
-                    }else if caracChoiceTwo.life <= 0 && (playerTwo.count == 2 || playerTwo.count == 1) {
+                        print("\(characChoiceTwo.name) est mort(e) !")
+                    }else if characChoiceTwo.life <= 0 && (playerTwo.count == 2 || playerTwo.count == 1) {
                         playerTwo.remove(at: index-1)
-                        print("\(caracChoiceTwo.name) est mort(e) !")
+                        print("\(characChoiceTwo.name) est mort(e) !")
                     }
             }
         }
@@ -348,7 +341,7 @@
         
             var index = 0
             
-            if caracChoiceTwo.type == "Guérisseur" {
+            if characChoiceTwo.type == "Guérisseur" {
                 
                 print ("Voulez-vous 1 : attaquer ou 2 : soigner ?")
             
@@ -357,7 +350,7 @@
                 switch choice {
                 case "1":
                     whoIhaveOne()
-                    let sentence = "Joueur 2 utilise avec \(caracChoiceTwo.name) et l'arme \(caracChoiceTwo.weapon.name)"
+                    let sentence = "Joueur 2 utilise avec \(characChoiceTwo.name) et l'arme \(characChoiceTwo.weapon.name)"
                     print("Qui voulez-vous attaquer ?")
 
                     if let choice =  readLine(){
@@ -365,18 +358,18 @@
                     switch choice {
                     case "1":
                         print(sentence)
-                        caracChoiceOne = playerOne[0]
-                        caracChoiceTwo.attack(character: caracChoiceOne)
+                        characChoiceOne = playerOne[0]
+                        characChoiceTwo.attack(character: characChoiceOne)
                         index = 0
                     case "2":
                         print(sentence)
-                        caracChoiceOne = playerOne[1]
-                        caracChoiceTwo.attack(character: caracChoiceOne)
+                        characChoiceOne = playerOne[1]
+                        characChoiceTwo.attack(character: characChoiceOne)
                         index = 1
                     case "3":
                         print(sentence)
-                        caracChoiceOne = playerOne[2]
-                        caracChoiceTwo.attack(character: caracChoiceOne)
+                        characChoiceOne = playerOne[2]
+                        characChoiceTwo.attack(character: characChoiceOne)
                         index = 2
                     default:
                         print("Mauvaise manipulation !")
@@ -384,7 +377,7 @@
                     
                     }
                 case "2":
-                    let sentence = "Joueur 2 soigne avec \(caracChoiceTwo.name) "
+                    let sentence = "Joueur 2 soigne avec \(characChoiceTwo.name) "
                     whoIhaveTwo()
                     print("Sélectionner le joueur à soigner")
                     if let choice =  readLine(){
@@ -392,16 +385,16 @@
                     switch choice {
                     case "1":
                         print(sentence)
-                        caracChoiceTwo = playerTwo[0]
-                        caracChoiceTwo.healing(character: caracChoiceTwo)
+                        characChoiceTwo = playerTwo[0]
+                        characChoiceTwo.healing(character: characChoiceTwo)
                     case "2":
                         print(sentence)
-                        caracChoiceTwo = playerTwo[1]
-                        caracChoiceTwo.healing(character: caracChoiceTwo)
+                        characChoiceTwo = playerTwo[1]
+                        characChoiceTwo.healing(character: characChoiceTwo)
                     case "3":
                         print(sentence)
-                        caracChoiceTwo = playerTwo[2]
-                        caracChoiceTwo.healing(character: caracChoiceTwo)
+                        characChoiceTwo = playerTwo[2]
+                        characChoiceTwo.healing(character: characChoiceTwo)
                     default:
                         print("Mauvaise manipulation !")
                     }
@@ -412,15 +405,15 @@
                 }
             
         }
-                if caracChoiceOne.life <= 0 {
+                if characChoiceOne.life <= 0 {
                     playerOne.remove(at: index)
-                    print("\(caracChoiceOne.name) est mort(e) !")
-                }else if caracChoiceOne.life <= 0 && (playerOne.count == 2 || playerOne.count == 1) {
+                    print("\(characChoiceOne.name) est mort(e) !")
+                }else if characChoiceOne.life <= 0 && (playerOne.count == 2 || playerOne.count == 1) {
                     playerOne.remove(at: index-1)
-                    print("\(caracChoiceOne.name) est mort(e) !")
+                    print("\(characChoiceOne.name) est mort(e) !")
                 }
             } else {
-                let sentence = "Joueur 2 utilise \(caracChoiceTwo.name) et l'arme \(caracChoiceTwo.weapon.name)"
+                let sentence = "Joueur 2 utilise \(characChoiceTwo.name) et l'arme \(characChoiceTwo.weapon.name)"
                 whoIhaveOne()
                 print("Qui voulez-vous attaquer ?")
                 if let choice =  readLine(){
@@ -429,30 +422,30 @@
                 switch choice {
                 case "1":
                     print(sentence)
-                    caracChoiceOne = playerOne[0]
-                    caracChoiceTwo.attack(character: caracChoiceOne)
+                    characChoiceOne = playerOne[0]
+                    characChoiceTwo.attack(character: characChoiceOne)
                     index = 0
                 case "2":
                     print(sentence)
-                    caracChoiceOne = playerOne[1]
-                    caracChoiceTwo.attack(character: caracChoiceOne)
+                    characChoiceOne = playerOne[1]
+                    characChoiceTwo.attack(character: characChoiceOne)
                     index = 1
                 case "3":
                     print(sentence)
-                    caracChoiceOne = playerOne[2]
-                    caracChoiceTwo.attack(character: caracChoiceOne)
+                    characChoiceOne = playerOne[2]
+                    characChoiceTwo.attack(character: characChoiceOne)
                     index = 2
                 default:
                     print("Mauvaise manipulation !")
                 }
                 
                 }
-                if caracChoiceOne.life <= 0 {
+                if characChoiceOne.life <= 0 {
                     playerOne.remove(at: index)
-                    print("\(caracChoiceOne.name) est mort(e) !")
-                }else if caracChoiceOne.life <= 0 && (playerOne.count == 2 || playerOne.count == 1) {
+                    print("\(characChoiceOne.name) est mort(e) !")
+                }else if characChoiceOne.life <= 0 && (playerOne.count == 2 || playerOne.count == 1) {
                     playerOne.remove(at: index-1)
-                    print("\(caracChoiceOne.name) est mort(e) !")
+                    print("\(characChoiceOne.name) est mort(e) !")
                 }            }
             
         }
@@ -460,7 +453,7 @@
          //MARK: -  Function allows to know who is the winner and print the stats of the game
 
         func win(){
-            if caracChoiceOne.life <= 0 {
+            if characChoiceOne.life <= 0 {
                 print("En \(rounds) tours le joueur 2 à gagner")
                 }else {
                 print("En \(rounds) tours le joueur 1 à gagner")
@@ -492,13 +485,13 @@
             
         switch choice {
         case "1":
-            caracChoiceOne = playerOne[0]
+            characChoiceOne = playerOne[0]
             attackOrHealOne()
         case "2":
-            caracChoiceOne = playerOne[1]
+            characChoiceOne = playerOne[1]
             attackOrHealOne()
         case "3":
-            caracChoiceOne = playerOne[2]
+            characChoiceOne = playerOne[2]
             attackOrHealOne()
         default:
             print("Mauvaise manipulation !")
@@ -517,13 +510,13 @@
             
         switch choice {
         case "1":
-            caracChoiceTwo = playerTwo[0]
+            characChoiceTwo = playerTwo[0]
             attackOrHealTwo()
         case "2":
-            caracChoiceTwo = playerTwo[1]
+            characChoiceTwo = playerTwo[1]
             attackOrHealTwo()
         case "3":
-            caracChoiceTwo = playerTwo[2]
+            characChoiceTwo = playerTwo[2]
             attackOrHealTwo()
         default:
             print("Mauvaise manipulation !")
