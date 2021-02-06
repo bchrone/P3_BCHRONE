@@ -14,6 +14,7 @@ class Character {
     var name : String
     var life : Int
     var type : String
+    
 
 
     init(name: String, life: Int, type : String, weapon: Weapon) {
@@ -38,7 +39,7 @@ class Character {
         character.life -= weapon.weaponPoint
         
         if character.life > 0 {
-        print("\(character.name) à été attaqué(e) et à maintenant \(character.life) point de vie ! ")
+        print("\n\(character.name) à été attaqué(e) par \(name) et à maintenant \(character.life) point de vie ! ")
         }
         
     }

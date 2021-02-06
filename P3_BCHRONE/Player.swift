@@ -2,42 +2,91 @@
 //  Player.swift
 //  P3_BCHRONE
 //
-//  Created by links on 08/01/2021.
+//  Created by links on 27/01/2021.
 //
 
 import Foundation
 
 class Player {
-    
     var name : String
-    var player: [Character]
-    var game : Game
+    var nameOfPlayer : String
+    var listOfCharacters : [Character]
+    var characChoice : Character
+
     
-    init(name: String, game: Game) {
-        self.name = name
-        self.player = []
-        self.game = game
-        
+    
+    init(nameOfPlayer: String) {
+
+        self.nameOfPlayer = nameOfPlayer
+        self.name = ""
+        self.listOfCharacters = []
+        self.characChoice = Warlike(name: "yo", life: 500, type: "guerrier", weapon: Sword())
     }
     
-    func chooseCharacters(){
-       
-       
+    // MARK: -  Function allowing to know the remaining characters.
+
+    func sameCharac(){
+        
+        name = readLine()!
+        
+        if listOfCharacters.count >= 1 && listOfCharacters.count <= 2 {
+            for nameOfChar in listOfCharacters {
+                while nameOfChar.name == name {
+                    print("\nVous ne pouvez pas utilisez deux fois le même joueur ! Recommencez !")
+                    print("\n\nEntrez le nom de votre personnage")
+                    name = readLine()!
+                    
+                }
+            }
+        }
+
+     }
+    // MARK: - Function allowing to know the name of each character of the player one.
+
+    func whoIhave(){
+        
+        var nbr = 0
+        
+        for characters in listOfCharacters{
+            
+            if characters.type == "Guerrier" {
+                nbr += 1
+                print("\(nbr) : \(characters.name) avec \(characters.life) points de vie, l'arme \(characters.weapon.name) qui provoque \(characters.weapon.weaponPoint) de dégâts et de type \(characters.type).")
+            }else {
+                nbr += 1
+                print("\(nbr) : \(characters.name) avec \(characters.life) points de vie, l'arme \(characters.weapon.name) qui provoque \(characters.weapon.weaponPoint) de dégâts et de type \(characters.type). Il peut donc soigné !")
+            }
            
-           print("Joueur 1 Sélectionné vos personnages !")
+            }
+                    
+        nbr = 0
+
+ }
+    
+    
+    // MARK: - Function allowing each player to choose a character
+
+       func chooseCharacters(){
        
-           while player.count != 3 {
+       print("Bienvenue dans le prototype du jeu de l'entreprise FrenchGame Factory ! \n\n")
+       
+           while listOfCharacters.count != 3 {
+               
                
                //print each sentence than you see in the variable
-               if player.count == 0 {
-                game.charactersLeft()
-           print("Sélectionner un premier personnage")
-               } else if player.count == 1 {
-                game.charactersLeft()
-           print("Sélectionner un deuxième personnage")
+               if listOfCharacters.count == 0 {
+                   
+                   print("\n\(nameOfPlayer) quel type de personnage voulez-vous ? \n1 : Guerrier \n2 : Guérisseur \n ")
+                   
+           print("Sélectionner un ou deux à l'aide de votre clavier numérique.")
+                   
+               } else if listOfCharacters.count == 1 {
+                   
+           print("\n\(nameOfPlayer) choisissez le type de votre deuxième personnage \n1 : Guerrier \n2 : Guérisseur \n  ")
+                   
                } else {
-                game.charactersLeft()
-                   print("Sélectionner un troisième personnage")
+                   
+           print("\n\(nameOfPlayer) choisissez le type de votre troisième personnage \n1 : Guerrier \n2 : Guérisseur \n ")
 
                }
                
@@ -45,55 +94,28 @@ class Player {
                if let choice = readLine(){//is used to read the input from the user.
                    switch choice {
                    case "1":
-                    game.caracChoiceOne = game.allCharacter[0]//recovery in a var the value for the tab of playerOne
-                    player.insert(game.caracChoiceOne, at: 0)//insert the value in playerOne
-                    game.allCharacter.remove(at: game.nbr)//remove the value in allcharacter
+                       print("\nEntrez le nom de votre guerrier :")
+                       //let name = readLine()
+                       sameCharac()
+                       characChoice = Warlike(name: name, life: 500, type: "Guérrier", weapon: Sword())//recovery in a var the value for the tab of playerOne
+                       listOfCharacters.insert(characChoice, at: 0)//insert the value in playerOne
                    case "2" :
-                    game.nbr += 1
-                    game.caracChoiceOne = game.allCharacter[1]
-                    game.player.insert(game.caracChoiceOne, at: 0)
-                    game.allCharacter.remove(at: game.nbr)
-                   case "3":
-                    game.nbr += 2
-                    game.caracChoiceOne = game.allCharacter[2]
-                    game.player.insert(game.caracChoiceOne, at: 0)
-                    game.allCharacter.remove(at: game.nbr)
-                   case "4" :
-                    game.nbr += 3
-                    game.caracChoiceOne = game.allCharacter[3]
-                    game.player.insert(game.caracChoiceOne, at: 0)
-                    game.allCharacter.remove(at: game.nbr)
-                   case "5":
-                    game.nbr += 4
-                    game.caracChoiceOne = game.allCharacter[4]
-                    game.player.insert(game.caracChoiceOne, at: 0)
-                    game.allCharacter.remove(at: game.nbr)
-                   case "6" :
-                    game.nbr += 5
-                    game.caracChoiceOne = game.allCharacter[5]
-                    game.player.insert(game.caracChoiceOne, at: 0)
-                    game.allCharacter.remove(at: game.nbr)
-                   case "7":
-                    game.nbr += 6
-                    game.caracChoiceOne = game.allCharacter[6]
-                    game.player.insert(game.caracChoiceOne, at: 0)
-                    game.allCharacter.remove(at: game.nbr)
-                   case "8" :
-                    game.nbr += 7
-                    game.caracChoiceOne = game.allCharacter[7]
-                    game.player.insert(game.caracChoiceOne, at: 0)
-                    game.allCharacter.remove(at: game.nbr)
+                       print("\nEntrez le nom de votre guérisseur :")
+                       sameCharac()
+                       characChoice = Healer(name: name, life: 500, type: "Guérisseur", weapon: SwordOfMeliodas())//recovery in a var the value for the tab of playerOne
+                       listOfCharacters.insert(characChoice, at: 0)
                    default:
-                       print("Mauvais choix")
+                       print("\nMauvais choix")
                    }
-                game.nbr = 0
-                   print("Vos personnages sont :")
-                game.whoIhave(player: player)
+                   if listOfCharacters.count == 1 {
+                       print("\nVotre Premier personnage est : ")
+                       whoIhave()
+                   }else if listOfCharacters.count > 1 {
+                    print("\n\(nameOfPlayer) vos personnages sont : ")
+                       whoIhave()
+                   }
+                   
                }
            }
-               
        }
-   
-    
-    
 }
