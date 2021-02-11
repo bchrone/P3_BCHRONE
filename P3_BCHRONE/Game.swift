@@ -9,18 +9,20 @@
 
     class Game {
 
+        var name : String
         var rWeapons : [Weapon]
-        var stats : [String: String]
         var characChoiceForAction : Character
         var characChoiceForSubire : Character
         var rounds : Int
         var nbr : Int
         var choiceOfThePlayer : Bool
+        //let player : Player
         let playerOne : Player
         let playerTwo : Player
 
             init () {
-                self.stats = ["Joueur 1":"", "Joueur 2":""]
+                self.name = ""
+                //self.player = Player(nameOfPlayer: "No name")
                 self.playerOne = Player(nameOfPlayer: "Joueur 1")
                 self.playerTwo = Player(nameOfPlayer: "Joueur 2")
                 self.rWeapons = [Sword(), Magic(), Dague()]
@@ -31,7 +33,189 @@
                 self.choiceOfThePlayer = false
             }
             
+        // MARK: -  Function allowing to know the remaining characters.
+
+        func sameCharac(of player : Player){
+            
+            if player.nameOfPlayer == "Joueur 1" {
+                
+                if player.listOfCharacters.count < 1 {
+                    
+                    name = readLine()!
+
+                }else{
+                    
+                    //while choiceOfthePlayer == false {
+                                        
+                    if player.listOfCharacters.count == 1 || player.listOfCharacters.count == 2 {
+                            
+                            name = readLine()!
+                            
+                        for nameOfChar in player.listOfCharacters {
+                                
+                                while nameOfChar.name == name && choiceOfThePlayer == false {
+                                    
+                                    choiceOfThePlayer = false
+                                    
+                                    print("\nVous ne pouvez pas utilisez deux fois le même joueur ! Recommencez !")
+                                    print("\n\nEntrez le nom de votre personnage")
+                                    
+                                    name = readLine()!
+                                    
+                                    if nameOfChar.name != name {
+                                        choiceOfThePlayer = true
+                                    }
+                                    
+                                    }
+                                
+                            choiceOfThePlayer = false
+                            }
+                        }
+                        
+                    }
+                
+                
+            }else{
+                
+                if player.listOfCharacters.count < 1 {
+                    name = readLine()!
+                    
+                    for nameOfChar in playerOne.listOfCharacters {
+                            
+                            while nameOfChar.name == name && choiceOfThePlayer  == false {
+                                
+                                choiceOfThePlayer  = false
+                                
+                                print("\nVous ne pouvez pas utilisez le même joueur que le joueur 1 ! Recommencez !")
+                                print("\n\nEntrez le nom de votre personnage")
+                                
+                                name = readLine()!
+                                
+                                if nameOfChar.name != name {
+                                    choiceOfThePlayer  = true
+                                }
+                                
+                                }
+                            
+                        choiceOfThePlayer  = false
+                        }
+
+                }else{
+                    
+                    //while choiceOfthePlayer == false {
+                                        
+                    if player.listOfCharacters.count == 1 || player.listOfCharacters.count == 2 {
+                            
+                            name = readLine()!
+                            
+                        for nameOfChar in player.listOfCharacters {
+                                
+                                while nameOfChar.name == name && choiceOfThePlayer == false {
+                                    
+                                    choiceOfThePlayer  = false
+                                    
+                                    print("\nVous ne pouvez pas utilisez deux fois le même joueur ! Recommencez !")
+                                    print("\n\nEntrez le nom de votre personnage")
+                                    
+                                    name = readLine()!
+                                    
+                                    if nameOfChar.name != name {
+                                        choiceOfThePlayer  = true
+                                    }
+                                    
+                                    }
+                                
+                            choiceOfThePlayer  = false
+                            }
+                        
+                        for nameOfChar in playerOne.listOfCharacters {
+                                
+                                while nameOfChar.name == name && choiceOfThePlayer  == false {
+                                    
+                                    choiceOfThePlayer  = false
+                                    
+                                    print("\nVous ne pouvez pas utilisez le même joueur que le joueur 1 ! Recommencez !")
+                                    print("\n\nEntrez le nom de votre personnage")
+                                    
+                                    name = readLine()!
+                                    
+                                    if nameOfChar.name != name {
+                                        choiceOfThePlayer  = true
+                                    }
+                                    
+                                    }
+                                
+                            choiceOfThePlayer  = false
+                            }
+                        }
+                        
+                    }
+                
+            }
+
+         }
+        // MARK: - Function allowing each player to choose a character
+
+        func chooseCharacters(of player : Player){
+           
+           print("Bienvenue dans le prototype du jeu de l'entreprise FrenchGame Factory ! \n\n")
+           
+            while player.listOfCharacters.count != 3 {
+                   
+                   
+                   //print each sentence than you see in the variable
+                if player.listOfCharacters.count == 0 {
+                       
+                    print("\n\(player.nameOfPlayer) quel type de personnage voulez-vous ? \n1 : Guerrier \n2 : Guérisseur \n ")
+                       
+               print("Sélectionner un ou deux à l'aide de votre clavier numérique.")
+                       
+                } else if player.listOfCharacters.count == 1 {
+                       
+                    print("\n\(player.nameOfPlayer) choisissez le type de votre deuxième personnage \n1 : Guerrier \n2 : Guérisseur \n  ")
+                       
+                   } else {
+                       
+                    print("\n\(player.nameOfPlayer) choisissez le type de votre troisième personnage \n1 : Guerrier \n2 : Guérisseur \n ")
+
+                   }
+                   
+                   //switch allowing to select a chartacter to attack
+                   if let choice = readLine(){//is used to read the input from the user.
+                       switch choice {
+                       case "1":
+                           print("\nEntrez le nom de votre guerrier :")
+                           //let name = readLine()
+                        sameCharac(of: player)
+                           characChoiceForAction = Warlike(name: name, life: 500, type: "Guérrier", weapon: Sword())//recovery in a var the value for the tab of playerOne
+                        player.listOfCharacters.insert(characChoiceForAction, at: 0)//insert the value in playerOne
+                       case "2" :
+                           print("\nEntrez le nom de votre guérisseur :")
+                        sameCharac(of: player)
+                        characChoiceForAction = Healer(name: name, life: 500, type: "Guérisseur", weapon: SwordOfMeliodas())//recovery in a var the value for the tab of playerOne
+                        player.listOfCharacters.insert(characChoiceForAction, at: 0)
+                       default:
+                           print("\nMauvais choix")
+                       }
+                    if player.listOfCharacters.count == 1 {
+                           print("\nVotre Premier personnage est : ")
+                        player.whoIhave()
+                       }else if player.listOfCharacters.count > 1 {
+                        print("\n\(player.nameOfPlayer) vos personnages sont : ")
+                        player.whoIhave()
+                       }
+                       
+                   }
+               }
+           }
         
+        
+        
+        
+        
+        
+        // MARK: -  Function allowing to know the remaining characters.
+
         func delete (player : Player) {
             
             
@@ -40,11 +224,7 @@
                 
                 if character.life <= 0 {
                     print("\n\(character.name) est mort(e) !")
-                    if player.nameOfPlayer == "Joueur 1" || character.life <= 0{
-                        stats["Joueur 1"]? += "\n" + character.name + " est mort au bout de \(rounds) tours."
-                    }else if player.nameOfPlayer == "Joueur 2" || character.life <= 0{
-                        stats["Joueur 2"]? += "\n" + character.name + " est mort au bout de \(rounds) tours."
-                    }
+
                     player.listOfCharacters.remove(at: nbr)
                     
                     
@@ -65,11 +245,7 @@
                 
                 if character.life <= 0 {
                     print("\n\(character.name) est mort(e) !")
-                    if player.nameOfPlayer == "Joueur 1" || character.life <= 0{
-                        stats["Joueur 1"]? += "\n" + character.name + " est mort au bout de \(rounds) tours."
-                    }else if player.nameOfPlayer == "Joueur 2" || character.life <= 0{
-                        stats["Joueur 2"]? += "\n" + character.name + " est mort au bout de \(rounds) tours."
-                    }
+
                     player.listOfCharacters.remove(at: nbr)
                     
                     
@@ -320,7 +496,7 @@
                         switch choice {
                         case "1":
                             if player.nameOfPlayer == "Joueur 1"{
-                            attack(of: playerTwo)
+                                attack(of: playerTwo)
                             }else{ attack(of: playerOne)}
                             choiceOfThePlayer = true
                         case "2" :
@@ -335,7 +511,7 @@
                 }
             }else{
                 if player.nameOfPlayer == "Joueur 1"{
-                attack(of: playerTwo)
+                    attack(of: playerTwo)
                 }else{ attack(of: playerOne)}
                 choiceOfThePlayer = true
             }
@@ -346,9 +522,8 @@
         func letsplay() {
             
             
-            playerOne.chooseCharacters()
-            playerTwo.chooseCharacters()
-
+            chooseCharacters(of: playerOne)
+            chooseCharacters(of: playerTwo)
             while playerOne.listOfCharacters.count != 0 && playerTwo.listOfCharacters.count != 0 {
 
                 rounds += 1
@@ -379,42 +554,14 @@
         func win () {
             
             if playerOne.listOfCharacters.count == 0 {
-                print("\nJoueur 2 vous avez gagné!\nVoici les statistiques des différents joueurs :\nJoueur 2 en \(rounds) tours vous avez fini le jeu avec ces joueurs :\n")
+                print("\nJoueur 2 vous avez gagné!\nStatistiques du jeu :\nJoueur 2 en \(rounds) tours vous avez fini le jeu avec ces joueurs :\n")
                 
                 playerTwo.whoIhave()
-  /*
-                for (player, statOfPLayer) in stats {
-                    if player == "Joueur 2" {
-                        print(statOfPLayer)
-                    }
-                }
-                
-                print("\nJoueur 1 vous avez perdu !\n")
-                
-                for (player, statOfPLayer) in stats {
-                    if player == "Joueur 1" {
-                        print(statOfPLayer)
-                    }
-                }
-   */
+
             }else if playerTwo.listOfCharacters.count == 0 {
-                print("\nJoueur 1 vous avez gagné!\n Voici les statistiques des différents joueurs :\nJoueur 1 en \(rounds) tours vous avez fini le jeu avec ces joueurs :\n")
+                print("\nJoueur 1 vous avez gagné!\nStatistiques du jeu :\nJoueur 1 en \(rounds) tours vous avez fini le jeu avec ces joueurs :\n")
                 
                 playerOne.whoIhave()
-           /*
-                for (player, statOfPLayer) in stats {
-                    if player == "Joueur 1" {
-                        print(statOfPLayer)
-                    }
-                }
-                
-                print("\nJoueur 2 vous avez perdu !\n")
-                
-                for (player, statOfPLayer) in stats {
-                    if player == "Joueur 2" {
-                        print(statOfPLayer)
-                    }
-                }*/
 
             }
             

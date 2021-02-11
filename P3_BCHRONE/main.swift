@@ -13,6 +13,5 @@ player.attack(character: player2)
 */
 
 var game = Game()
-//game.letsplay()
-//game.win()
-game.playerOne.whoIhave()
+game.letsplay()
+game.win()
