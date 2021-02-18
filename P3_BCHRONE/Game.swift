@@ -10,19 +10,21 @@
     class Game {
 
         var name : String
+        var ancientName : String
+        var secondAncientName : String
         var rWeapons : [Weapon]
         var characChoiceForAction : Character
         var characChoiceForSubire : Character
         var rounds : Int
         var nbr : Int
         var choiceOfThePlayer : Bool
-        //let player : Player
         let playerOne : Player
         let playerTwo : Player
 
             init () {
                 self.name = ""
-                //self.player = Player(nameOfPlayer: "No name")
+                self.ancientName = ""
+                self.secondAncientName = ""
                 self.playerOne = Player(nameOfPlayer: "Joueur 1")
                 self.playerTwo = Player(nameOfPlayer: "Joueur 2")
                 self.rWeapons = [Sword(), Magic(), Dague()]
@@ -35,25 +37,143 @@
             
         // MARK: -  Function allowing to know the remaining characters.
 
-        func sameCharac(of player : Player){
+        func sameCharacOfPlayerTwo(of player: Player){
             
-            if player.nameOfPlayer == "Joueur 1" {
+            if player.nameOfPlayer == "Joueur 2" {
+            
+            if player.listOfCharacters.count < 1 {
                 
-                if player.listOfCharacters.count < 1 {
+                name = readLine()!
+                ancientName = name
+                
+                    choiceOfThePlayer = false
                     
-                    name = readLine()!
+                    while choiceOfThePlayer == false {
+                        
+                        let characOne = playerOne.listOfCharacters[0]
+                        let characTwo = playerOne.listOfCharacters[1]
+                        let characThree = playerOne.listOfCharacters[2]
+                        
+                        if (characOne.name.caseInsensitiveCompare(name) == .orderedSame || characTwo.name.caseInsensitiveCompare(name) == .orderedSame) || characThree.name.caseInsensitiveCompare(name) == .orderedSame {
+                            
+                            choiceOfThePlayer  = false
+                            
+                            print("\nVous ne pouvez pas utilisez le même joueur que le joueur 1 ! Recommencez !")
+                            print("\n\nEntrez le nom de votre personnage")
+                            
+                            name = readLine()!
 
-                }else{
+                        }else{
+                            choiceOfThePlayer = true
+                            secondAncientName = name
+                        }
+                    }
+                
+                choiceOfThePlayer = false
                     
-                    //while choiceOfthePlayer == false {
-                                        
-                    if player.listOfCharacters.count == 1 || player.listOfCharacters.count == 2 {
+                }
+                
+            else if player.listOfCharacters.count == 1 {
+                        
+                        name = readLine()!
+                    
+      
+                    while choiceOfThePlayer == false {
+                        
+                        let characOne = playerOne.listOfCharacters[0]
+                        let characTwo = playerOne.listOfCharacters[1]
+                        let characThree = playerOne.listOfCharacters[2]
+                        
+                            
+                        if ancientName.caseInsensitiveCompare(name) == .orderedSame {
+                                
+                                choiceOfThePlayer  = false
+                                
+                                print("\nVous ne pouvez pas utilisez le même joueur que le joueur 1 ou vous ne pouvez pas utilisez deux fois le même joueur ! Recommencez !")
+                                print("\n\nEntrez le nom de votre personnage")
+                                
+                                name = readLine()!
+
+                            
+                        }else if characOne.name.caseInsensitiveCompare(name) == .orderedSame || characTwo.name.caseInsensitiveCompare(name) == .orderedSame || characThree.name.caseInsensitiveCompare(name) == .orderedSame {
+                            
+                            choiceOfThePlayer  = false
+                            
+                            print("\nVous ne pouvez pas utilisez le même joueur que le joueur 1 ou vous ne pouvez pas utilisez deux fois le même joueur ! Recommencez !")
+                            print("\n\nEntrez le nom de votre personnage")
+                            
+                            name = readLine()!
+
+                        
+                    }else{
+                                choiceOfThePlayer = true
+                                secondAncientName = name
+                            }
+                    }
+            }else{
+                
+                let characOne = playerOne.listOfCharacters[0]
+                let characTwo = playerOne.listOfCharacters[1]
+                let characThree = playerOne.listOfCharacters[2]
+                
+                choiceOfThePlayer = false
+                name = readLine()!
+                
+                while choiceOfThePlayer == false {
+                                                
+                        if secondAncientName.caseInsensitiveCompare(name) == .orderedSame || ancientName.caseInsensitiveCompare(name) == .orderedSame {
+                            
+                            print("\nVous ne pouvez pas utilisez deux fois le même joueur ! Recommencez !")
+                            print("\n\nEntrez le nom de votre personnage")
                             
                             name = readLine()!
                             
-                        for nameOfChar in player.listOfCharacters {
+                            choiceOfThePlayer = false
+                            
+                            
+                        }else if (characOne.name.caseInsensitiveCompare(name) == .orderedSame || characTwo.name.caseInsensitiveCompare(name) == .orderedSame) || characThree.name.caseInsensitiveCompare(name) == .orderedSame {
+                            
+                            choiceOfThePlayer  = false
+                            
+                            print("\nVous ne pouvez pas utilisez le même joueur que le joueur 1 ! Recommencez !")
+                            print("\n\nEntrez le nom de votre personnage")
+                            
+                            name = readLine()!
+
+                        }
+            }
+        
+            }
+            }
+
+        
+    }
+        
+        // MARK: -  Function allowing to know the remaining characters.
+
+        func sameCharac(of player : Player){
+            
+            if player.nameOfPlayer == "Joueur 1" {
+            
+                if player.listOfCharacters.count < 1 {
+                    
+                    name = readLine()!
+                    ancientName = name
+                    
+                    
+                     choiceOfThePlayer = false
+                        
+            
+
+                }else if player.listOfCharacters.count == 1 {
+                            
+                            name = readLine()!
+                        
+          
+                        while choiceOfThePlayer == false {
+                            
                                 
-                                while nameOfChar.name == name && choiceOfThePlayer == false {
+                            if ancientName.caseInsensitiveCompare(name) == .orderedSame {
                                     
                                     choiceOfThePlayer = false
                                     
@@ -61,99 +181,40 @@
                                     print("\n\nEntrez le nom de votre personnage")
                                     
                                     name = readLine()!
-                                    
-                                    if nameOfChar.name != name {
-                                        choiceOfThePlayer = true
-                                    }
-                                    
-                                    }
                                 
-                            choiceOfThePlayer = false
-                            }
+                                    
+                                
+                            }else{
+                                    choiceOfThePlayer = true
+                                    secondAncientName = name
+                                }
                         }
-                        
-                    }
-                
-                
-            }else{
-                
-                if player.listOfCharacters.count < 1 {
+                }else{
+                    
+                    choiceOfThePlayer = false
                     name = readLine()!
                     
-                    for nameOfChar in playerOne.listOfCharacters {
-                            
-                            while nameOfChar.name == name && choiceOfThePlayer  == false {
+                    while choiceOfThePlayer == false {
+                                                    
+                            if secondAncientName.caseInsensitiveCompare(name) == .orderedSame || ancientName.caseInsensitiveCompare(name) == .orderedSame {
                                 
-                                choiceOfThePlayer  = false
-                                
-                                print("\nVous ne pouvez pas utilisez le même joueur que le joueur 1 ! Recommencez !")
+                                print("\nVous ne pouvez pas utilisez deux fois le même joueur ! Recommencez !")
                                 print("\n\nEntrez le nom de votre personnage")
                                 
                                 name = readLine()!
                                 
-                                if nameOfChar.name != name {
-                                    choiceOfThePlayer  = true
-                                }
+                                choiceOfThePlayer = false
                                 
-                                }
-                            
-                        choiceOfThePlayer  = false
-                        }
-
-                }else{
-                    
-                    //while choiceOfthePlayer == false {
-                                        
-                    if player.listOfCharacters.count == 1 || player.listOfCharacters.count == 2 {
-                            
-                            name = readLine()!
-                            
-                        for nameOfChar in player.listOfCharacters {
                                 
-                                while nameOfChar.name == name && choiceOfThePlayer == false {
-                                    
-                                    choiceOfThePlayer  = false
-                                    
-                                    print("\nVous ne pouvez pas utilisez deux fois le même joueur ! Recommencez !")
-                                    print("\n\nEntrez le nom de votre personnage")
-                                    
-                                    name = readLine()!
-                                    
-                                    if nameOfChar.name != name {
-                                        choiceOfThePlayer  = true
-                                    }
-                                    
-                                    }
-                                
-                            choiceOfThePlayer  = false
+                            }else{
+                                choiceOfThePlayer = true
                             }
-                        
-                        for nameOfChar in playerOne.listOfCharacters {
-                                
-                                while nameOfChar.name == name && choiceOfThePlayer  == false {
-                                    
-                                    choiceOfThePlayer  = false
-                                    
-                                    print("\nVous ne pouvez pas utilisez le même joueur que le joueur 1 ! Recommencez !")
-                                    print("\n\nEntrez le nom de votre personnage")
-                                    
-                                    name = readLine()!
-                                    
-                                    if nameOfChar.name != name {
-                                        choiceOfThePlayer  = true
-                                    }
-                                    
-                                    }
-                                
-                            choiceOfThePlayer  = false
-                            }
-                        }
-                        
-                    }
+                }
                 
             }
 
          }
+        }
         // MARK: - Function allowing each player to choose a character
 
         func chooseCharacters(of player : Player){
@@ -187,11 +248,13 @@
                            print("\nEntrez le nom de votre guerrier :")
                            //let name = readLine()
                         sameCharac(of: player)
+                        sameCharacOfPlayerTwo(of: player)
                            characChoiceForAction = Warlike(name: name, life: 500, type: "Guérrier", weapon: Sword())//recovery in a var the value for the tab of playerOne
                         player.listOfCharacters.insert(characChoiceForAction, at: 0)//insert the value in playerOne
                        case "2" :
                            print("\nEntrez le nom de votre guérisseur :")
                         sameCharac(of: player)
+                        sameCharacOfPlayerTwo(of: player)
                         characChoiceForAction = Healer(name: name, life: 500, type: "Guérisseur", weapon: SwordOfMeliodas())//recovery in a var the value for the tab of playerOne
                         player.listOfCharacters.insert(characChoiceForAction, at: 0)
                        default:
