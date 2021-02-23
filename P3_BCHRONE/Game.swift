@@ -12,7 +12,7 @@
         var name : String
         var ancientName : String
         var secondAncientName : String
-        var rWeapons : [Weapon]
+        var randomWeaponsForSafe : [Weapon]
         var characChoiceForAction : Character
         var characChoiceForSubire : Character
         var rounds : Int
@@ -27,7 +27,7 @@
                 self.secondAncientName = ""
                 self.playerOne = Player(nameOfPlayer: "Joueur 1")
                 self.playerTwo = Player(nameOfPlayer: "Joueur 2")
-                self.rWeapons = [Sword(), Magic(), Dague()]
+                self.randomWeaponsForSafe = [Sword(), Magic(), Dague()]
                 self.characChoiceForAction = Warlike(name: "Eli", life: 2000, type: "Guérisseur", weapon: Gideon())
                 self.characChoiceForSubire = Warlike(name: "Eli", life: 2000, type: "Guérisseur", weapon: Gideon())
                 self.rounds = 0
@@ -140,7 +140,7 @@
                             
                             name = readLine()!
 
-                        }
+                        }else{choiceOfThePlayer = true}
             }
         
             }
@@ -222,6 +222,9 @@
            print("Bienvenue dans le prototype du jeu de l'entreprise FrenchGame Factory ! \n\n")
            
             while player.listOfCharacters.count != 3 {
+                
+               let randomWeapons = [SwordOfMeliodas(),Spear(),Gideon(),Herritt(),Aldan(),Lostvayne()]
+               let randomIndex =  Int(arc4random_uniform(UInt32(randomWeapons.count)))
                    
                    
                    //print each sentence than you see in the variable
@@ -249,13 +252,13 @@
                            //let name = readLine()
                         sameCharac(of: player)
                         sameCharacOfPlayerTwo(of: player)
-                           characChoiceForAction = Warlike(name: name, life: 500, type: "Guérrier", weapon: Sword())//recovery in a var the value for the tab of playerOne
+                           characChoiceForAction = Warlike(name: name, life: 500, type: "Guérrier", weapon: randomWeapons[randomIndex])//recovery in a var the value for the tab of playerOne
                         player.listOfCharacters.insert(characChoiceForAction, at: 0)//insert the value in playerOne
                        case "2" :
                            print("\nEntrez le nom de votre guérisseur :")
                         sameCharac(of: player)
                         sameCharacOfPlayerTwo(of: player)
-                        characChoiceForAction = Healer(name: name, life: 500, type: "Guérisseur", weapon: SwordOfMeliodas())//recovery in a var the value for the tab of playerOne
+                        characChoiceForAction = Healer(name: name, life: 500, type: "Guérisseur", weapon: randomWeapons[randomIndex])//recovery in a var the value for the tab of playerOne
                         player.listOfCharacters.insert(characChoiceForAction, at: 0)
                        default:
                            print("\nMauvais choix")
@@ -324,19 +327,20 @@
         
         
    //MARK: - Function allowing to have a random chest in the a party
+        
         func randomWeapons(for player : Player){
-            let randomIndex = Int(arc4random_uniform(UInt32(rWeapons.count)))
-            let randomWeapon = rWeapons [randomIndex]
+            let randomIndexForSafe = Int(arc4random_uniform(UInt32(randomWeaponsForSafe.count)))
+            let randomWeaponSafe = randomWeaponsForSafe [randomIndexForSafe]
             let randomT = Int(arc4random_uniform(UInt32(30)))//tour aléatoire
             
             if randomT <= 5 && randomT >= 2 && player.nameOfPlayer == "Joueur 1"{
-                print("Joueur 1 vous avez trouvé un coffre ! L'arme de votre personnage \(characChoiceForAction.name), \(characChoiceForAction.weapon.name)  de \(characChoiceForAction.weapon.weaponPoint) de dégâts sera remplacée!")
-                characChoiceForAction.weapon = randomWeapon
-                print("Félicitation vous héritez d'une une nouvelle arme qui est \(characChoiceForAction.weapon.name) avec \(characChoiceForAction.weapon.weaponPoint) de dégâts!")
+                print("\nJoueur 1 vous avez trouvé un coffre ! L'arme de votre personnage \(characChoiceForAction.name), \(characChoiceForAction.weapon.name)  de \(characChoiceForAction.weapon.weaponPoint) de dégâts sera remplacée!")
+                characChoiceForAction.weapon = randomWeaponSafe
+                print("\nFélicitation vous héritez d'une une nouvelle arme qui est \(characChoiceForAction.weapon.name) avec \(characChoiceForAction.weapon.weaponPoint) de dégâts!")
             }else if randomT >= 25 && randomT <= 28 && player.nameOfPlayer == "Joueur 2"{
-                print("Joueur 1 vous avez trouvé un coffre ! L'arme de votre personnage \(characChoiceForAction.name), \(characChoiceForAction.weapon.name)  de \(characChoiceForAction.weapon.weaponPoint) de dégâts sera remplacée!")
-                characChoiceForAction.weapon = randomWeapon
-                print("Félicitation vous héritez d'une une nouvelle arme qui est \(characChoiceForAction.weapon.name) avec \(characChoiceForAction.weapon.weaponPoint) de dégâts!")
+                print("\nJoueur 1 vous avez trouvé un coffre ! L'arme de votre personnage \(characChoiceForAction.name), \(characChoiceForAction.weapon.name)  de \(characChoiceForAction.weapon.weaponPoint) de dégâts sera remplacée!")
+                characChoiceForAction.weapon = randomWeaponSafe
+                print("\nFélicitation vous héritez d'une une nouvelle arme qui est \(characChoiceForAction.weapon.name) avec \(characChoiceForAction.weapon.weaponPoint) de dégâts!")
             }
         }
 
@@ -609,6 +613,8 @@
                 
                 
             }
+            
+            win()
          
          }
         
@@ -617,9 +623,10 @@
         func win () {
             
             if playerOne.listOfCharacters.count == 0 {
-                print("\nJoueur 2 vous avez gagné!\nStatistiques du jeu :\nJoueur 2 en \(rounds) tours vous avez fini le jeu avec ces joueurs :\n")
+                print("\nJoueur 2 vous avez gagné!\n\nStatistiques du jeu :\nJoueur 2 en \(rounds) tours vous avez fini le jeu avec ces joueurs :\n")
                 
                 playerTwo.whoIhave()
+                
 
             }else if playerTwo.listOfCharacters.count == 0 {
                 print("\nJoueur 1 vous avez gagné!\nStatistiques du jeu :\nJoueur 1 en \(rounds) tours vous avez fini le jeu avec ces joueurs :\n")

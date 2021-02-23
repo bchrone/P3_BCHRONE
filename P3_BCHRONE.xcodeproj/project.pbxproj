@@ -72,8 +72,8 @@
 				5FC1ED3A25934FF900C5F52F /* main.swift */,
 				5FC1ED422593501D00C5F52F /* Weapon.swift */,
 				5FC1ED48259350A400C5F52F /* Game.swift */,
-				6137C172259CA1DD00473FA6 /* Character */,
 				1ABA22E525C18721002EF840 /* Player.swift */,
+				6137C172259CA1DD00473FA6 /* Character */,
 			);
 			path = P3_BCHRONE;
 			sourceTree = "<group>";
